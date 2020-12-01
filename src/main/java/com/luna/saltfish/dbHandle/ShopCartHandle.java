@@ -1,6 +1,5 @@
 package com.luna.saltfish.dbHandle;
 
-
 import com.luna.saltfish.dbc.DatabaseConnection;
 import com.luna.saltfish.vo.Goods;
 import com.luna.saltfish.vo.User;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopCartHandle {
-    private Connection conn = null;
+    private Connection        conn  = null;
     private PreparedStatement pstmt = null;
 
     public ShopCartHandle() {
@@ -23,8 +22,8 @@ public class ShopCartHandle {
         }
     }
 
-    //获取user购物车物品数量
-    //不一致性标记：为什么用id作参数？
+    // 获取user购物车物品数量
+    // 不一致性标记：为什么用id作参数？
     public Integer getShopCartNum(int id) throws Exception {
         String sql = "SELECT count(goodsId) FROM shoppingcart WHERE userId=?";
         this.pstmt = this.conn.prepareStatement(sql);
@@ -37,16 +36,43 @@ public class ShopCartHandle {
         }
     }
 
-    //增加一条购物车记录，goodsNum已废弃
-    public boolean doSaveShoppingCart(int goodsNum, int goodsId, int userId) throws Exception {
-        boolean flag = false;
-        String sql = "select id from shoppingcart where userId=" + userId + " and goodsId=" + goodsId;
-        this.pstmt = this.conn.prepareStatement(sql);
-        ResultSet rs = this.pstmt.executeQuery();
-        if (rs.next()) {
-            return false;
+    /**
+     * 检测是否已经加入购物车
+     * 
+     * @param userId
+     * @param goodsId
+     * @return
+     * @throws Exception
+     */
+    public boolean checkShoppingCart(int userId, int goodsId) throws Exception {
+        ResultSet rs = null;
+        try {
+            String sql = "select id from shoppingcart where userId=" + userId + " and goodsId=" + goodsId;
+            this.pstmt = this.conn.prepareStatement(sql);
+            rs = this.pstmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } finally {
+            rs.close();
         }
-        sql = "INSERT INTO shoppingcart(id,goodsId,userId) VALUES (?,?,?)";
+
+    }
+
+    /**
+     * 增加一条购物车记录，goodsNum已废弃
+     * 
+     * @param goodsNum
+     * @param goodsId
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    public boolean doSaveShoppingCart(int goodsNum, int goodsId, int userId) throws Exception {
+        boolean flag = checkShoppingCart(goodsId, userId);
+        String sql = "INSERT INTO shoppingcart(id,goodsId,userId) VALUES (?,?,?)";
         this.pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, goodsNum);
         pstmt.setInt(2, goodsId);
@@ -54,16 +80,22 @@ public class ShopCartHandle {
         if (this.pstmt.executeUpdate() > 0) {
             flag = true;
         }
-        rs.close();
         this.pstmt.close();
         return flag;
     }
 
-    //查找user所有购物车内物品
+    /**
+     * 查找user所有购物车内物品
+     * 
+     * @param user
+     * @return
+     * @throws Exception
+     */
     public List<Goods> findGoodsByUser(User user) throws Exception {
         int userId = user.getId();
         List<Goods> all = new ArrayList<Goods>();
-        String sql = "select id,num,content,type_id,image,producter_id,price,create_date,name from `goods` where id=any(SELECT goodsId from `shoppingcart`  where userId=?) order by create_date desc";
+        String sql =
+            "select id,num,content,type_id,image,producter_id,price,create_date,name from `goods` where id=any(SELECT goodsId from `shoppingcart`  where userId=?) order by create_date desc";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setInt(1, userId);
         ResultSet rs = this.pstmt.executeQuery();
@@ -87,7 +119,7 @@ public class ShopCartHandle {
         return all;
     }
 
-    //移除购物车的一个物品
+    // 移除购物车的一个物品
     public boolean removeList(int goodId, int userId) throws Exception {
         Boolean flag = false;
         String sql = "Delete from shoppingcart where goodsId=? and userId=?";
@@ -101,7 +133,7 @@ public class ShopCartHandle {
         return flag;
     }
 
-    //清空user的购物车
+    // 清空user的购物车
     public boolean removeAllByUser(User user) throws Exception {
         Boolean flag = false;
         String sql = "Delete from shoppingcart where and userId=?";

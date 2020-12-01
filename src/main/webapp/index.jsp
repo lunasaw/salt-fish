@@ -11,10 +11,9 @@
 <%@ page import="com.luna.saltfish.vo.User" %>
 <%
     String path = request.getContextPath();
-    System.out.println(path);
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
-    System.out.println(basePath);
+    // http://127.0.0.1:8080/salt-fish/
 %>
 <%
     //显示第几页

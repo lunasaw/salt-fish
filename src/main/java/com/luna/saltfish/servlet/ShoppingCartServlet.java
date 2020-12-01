@@ -18,50 +18,51 @@ import java.io.IOException;
  */
 @WebServlet("/ShoppingCartServlet")
 public class ShoppingCartServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public ShoppingCartServlet() {
-		super();
-	}
+    public ShoppingCartServlet() {
+        super();
+    }
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException {
 
-		if (LoginVerify.isLogin(request)) {
-			User user = (User) request.getSession().getAttribute("loginUser");
-			int userId = user.getId();
-			int goodsId = Integer.parseInt(request.getParameter("goodsId"));
-			ShopCartHandle shopCartHandle = new ShopCartHandle();
-			GoodsHandle goodsHandle = new GoodsHandle();
-			Goods goods=null;
-			try {
-                goods=goodsHandle.findById(goodsId);
+        if (LoginVerify.isLogin(request)) {
+            User user = (User)request.getSession().getAttribute("loginUser");
+            int userId = user.getId();
+            int goodsId = Integer.parseInt(request.getParameter("goodsId"));
+            ShopCartHandle shopCartHandle = new ShopCartHandle();
+            GoodsHandle goodsHandle = new GoodsHandle();
+            Goods goods = null;
+            try {
+                goods = goodsHandle.findById(goodsId);
             } catch (Exception e1) {
                 e1.printStackTrace();
-            }finally {
-            	goodsHandle.close();
-			}
-			try {
-				if(goods!=null && goods.getStates()==2 && shopCartHandle.doSaveShoppingCart(0, goodsId, userId)){
-					response.getWriter().print("success");
-				}
-				else{
-					response.getWriter().print("error");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				response.getWriter().print("error");
-			}finally {
-				shopCartHandle.close();
-			}
-		} else {
-			response.getWriter().print("unLogin");
-		}
-	}
+            } finally {
+                goodsHandle.close();
+            }
+            try {
+                if (goods != null && goods.getStates() == 2 && shopCartHandle.doSaveShoppingCart(0, goodsId, userId)) {
+                    response.getWriter().print("success");
+                } else {
+                    response.getWriter().print("error");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.getWriter().print("error");
+            } finally {
+                shopCartHandle.close();
+            }
+        } else {
+            response.getWriter().print("unLogin");
+        }
+    }
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    @Override
+    protected void doPost(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

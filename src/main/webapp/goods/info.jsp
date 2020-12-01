@@ -1,6 +1,7 @@
 <%@page import="com.luna.saltfish.dbHandle.UserHandle" %>
 <%@page
-        import="com.luna.saltfish.dbHandle.GoodsHandle,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*" %>
+        import="com.luna.saltfish.dbHandle.GoodsHandle,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
+%>
 <%/*
 物品详情页，包含详情和操作按钮
 */%>
@@ -8,14 +9,14 @@
          pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <jsp:include page="../site/head.jsp"/>
     <base href="<%=basePath%>">
+    <jsp:include page="../site/head.jsp"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>物品详情</title>
@@ -26,18 +27,52 @@
             }
         }
 
-        function collect(goodsId) {
+        function collect(goodsId, isLogin) {
+            if (isLogin) {
+                collectRequest = new XMLHttpRequest();
+                collectRequest.onreadystatechange = function () {
+                    // 已经收藏readyState=4
+                    if ((collectRequest.readyState == 4) && (collectRequest.status == 200)) {
+                        if (collectRequest.responseText == "success") {
+                            document.getElementById("collectButton").innerHTML = "==已收藏==";
+                        }
+                    }
+                }
+                collectRequest.open("GET", "CollectServlet?goodsId=" + goodsId + "&t=" + Math.random(), true);
+                collectRequest.send();
+            } else {
+                window.location.href = "user/login.jsp?login-info=" + "请先登录";
+            }
+        }
+
+
+        $(document).ready(function () {
+            let searchParams = new URLSearchParams(window.location.search);
+            let goodsId = searchParams.get('goodsid');
             collectRequest = new XMLHttpRequest();
             collectRequest.onreadystatechange = function () {
+                // 已经收藏readyState=4
                 if ((collectRequest.readyState == 4) && (collectRequest.status == 200)) {
                     if (collectRequest.responseText == "success") {
                         document.getElementById("collectButton").innerHTML = "==已收藏==";
                     }
                 }
             }
-            collectRequest.open("GET", "CollectServlet?goodsId=" + goodsId + "&t=" + Math.random(), true);
+            collectRequest.open("GET", "CheckCollectServlet?goodsId=" + goodsId + "&t=" + Math.random(), true);
             collectRequest.send();
-        }
+
+            ShoppingRequest = new XMLHttpRequest();
+            ShoppingRequest.onreadystatechange = function () {
+                // 已经收藏readyState=4
+                if ((collectRequest.readyState == 4) && (collectRequest.status == 200)) {
+                    if (collectRequest.responseText == "success") {
+                        document.getElementById("addCastButton").innerHTML = "已加入购物车";
+                    }
+                }
+            }
+            ShoppingRequest.open("GET", "CheckShoppingServlet?goodsId=" + goodsId + "&t=" + Math.random(), true);
+            ShoppingRequest.send();
+        });
 
         function shoppingCart(isLogin, goodsNum, goodsId) {
 
@@ -59,7 +94,6 @@
                 window.location.href = "user/login.jsp?login-info=" + "请先登录";
             }
         }
-
     </script>
 </head>
 <body>
@@ -131,7 +165,7 @@
                                 </p>
                                 <p>
                                     <br/>类型：<a target="_blank"
-                                               href="<%=basePath %>index.jsp?ceta=${good.getType_id()}"><%=typeName %>
+                                               href="<%=basePath %>index.jsp?ceta=${good.getTypeId()}"><%=typeName %>
                                 </a><br/>
                                     <br/>
                                 </p>
@@ -215,7 +249,8 @@
                         <hr/>
                         <div class="row">
                             <div class="col-md-4">
-                                <button id="collectButton" onclick="collect(<%=good.getId()%>)" type="button"
+                                <button id="collectButton" onclick="collect(<%=good.getId()%>,<%=isLogin %>)"
+                                        type="button"
                                         class="center-block btn btn-default">收藏此物品
                                 </button>
                             </div>
@@ -248,7 +283,7 @@
     <jsp:include page="../site/footer.jsp"/>
 </body>
 </html>
-<%
-    userHandle.close();
-    goodsHandle.close();
-%>
+<%--<%--%>
+<%--    userHandle.close();--%>
+<%--    goodsHandle.close();--%>
+<%--%>--%>

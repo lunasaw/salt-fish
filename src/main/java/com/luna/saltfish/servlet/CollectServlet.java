@@ -1,6 +1,5 @@
 package com.luna.saltfish.servlet;
 
-
 import com.luna.saltfish.dbHandle.CollectHandle;
 import com.luna.saltfish.dbHandle.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
@@ -32,11 +31,18 @@ public class CollectServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    //添加一个物品到收藏夹
+    /**
+     * 添加一个物品到收藏夹
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (LoginVerify.isLogin(request)) {
-            User user = (User) request.getSession().getAttribute("loginUser");
+            User user = (User)request.getSession().getAttribute("loginUser");
             int userId = user.getId();
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
             CollectHandle collectHandle = new CollectHandle();
@@ -70,7 +76,8 @@ public class CollectServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
         // TODO Auto-generated method stub
         doGet(request, response);
     }
