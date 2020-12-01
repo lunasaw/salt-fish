@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+.img-item-goods {
+	width: 110px;
+	height: 110px;
+}
+
+.detail-goods {
+	margin: 10px 0px;
+}
+
+.img-personal-main-info {
+	width: 80px;
+}
+
+.personal-main-info {
+	text-align: center;
+}
+.img-personal-info-info{
+	width: 150px;
+	/*height: 150px;*/
+}
+.info-img {
+	width:350px;
+}
+.info-goods{
+	font-size:17px;
+	}
+.info-goods-name{
+	color:#D35473;
+	}
+.info-goods-content{
+	font-size:15px;
+	}
+.bg-beselect{
+	background-color:#FF8C8C;
+}
+
+.page-cut-btn{
+	background-color:#D9EDF7 !important;
+}
+/*首页分类列表，已弃用*/
+.index-ceta-list{
+	background-color:#D9EDF7 !important;
+}
+.active{
+	background-color:#5892EE !important;
+}
+pre{
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
