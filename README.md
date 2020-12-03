@@ -62,17 +62,16 @@ salt-fish
 ```sh
 git clone https://github.com/czy1024/salt-fish.git
 ```
+### 部署
 
-### 文件目录说明
 eg:
 
-```
-    找到src/main/java/com/ruoyi/YttvPlatformApplication.java启动它        
-```
-    当然首先你需要修改你的数据库
-    将sql文件夹下的数据导入你的数据
-    在yttv-admin/src/main/resources/application-druid.yml修改连接
-## 各 Module 介绍
+    当然首先你需要修改你的数据库@src/main/java/com/luna/saltfish/dbc/DatabaseConnection.java
+    将sql文件夹下的数据导入你的数据库
+    使用tomcat：项目开发使用的版本为8
+    使用mysql版本为：5.7
+    java版本为：jdk1.8
+### 文件目录说明
 
 ```
 ____src
