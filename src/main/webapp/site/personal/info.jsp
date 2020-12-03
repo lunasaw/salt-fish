@@ -8,10 +8,12 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
+        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.constant.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
 <%
-    //根据cache参数来决定是否使用缓存
-//解决上传新头像不刷新的问题
+    /**
+     * 根据cache参数来决定是否使用缓存
+     * 解决上传新头像不刷新的问题
+     */
     String isCache = request.getParameter("cache");
     if (isCache != null && isCache.equals("0")) {
         response.setHeader("Pragma", "No-cache");
@@ -27,7 +29,7 @@
     if (request.getAttribute("isMe") != null) {
         user = me;
     } else {
-        user = userHandle.findById(Integer.parseInt(request.getParameter("userid")));
+        user = userHandle.findById(Integer.parseInt(request.getParameter("userId")));
     }
 %>
 

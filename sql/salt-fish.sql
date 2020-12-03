@@ -97,8 +97,8 @@ CREATE TABLE `message` (
 -- Records of message
 -- ----------------------------
 BEGIN;
-INSERT INTO `message` VALUES (1, 10, '你的商品<a target=\'_blank\' href=\'goods/info.jsp?goodsid=16\'>华为荣耀4x手机</a>被购买，请尽快联系买家<a target=\'_blank\' href=\'user/personal.jsp?tab=info&userid=1022\'>luna</a>，以下为买家的附加信息（可能为空）\n==============\nnihap', '2020-11-30 22:26:15', 31, NULL);
-INSERT INTO `message` VALUES (1, 123, '你的商品<a target=\'_blank\' href=\'goods/info.jsp?goodsid=14\'>室内物品收纳架，多功能免钉可伸缩衣柜分层隔板</a>被购买，请尽快联系买家<a target=\'_blank\' href=\'user/personal.jsp?tab=info&userid=1022\'>luna</a>，以下为买家的附加信息（可能为空）\n==============\n你好我很喜欢', '2020-12-01 17:13:38', 32, NULL);
+INSERT INTO `message` VALUES (1, 10, '你的商品<a target=\'_blank\' href=\'goods/info.jsp?goodsId=16\'>华为荣耀4x手机</a>被购买，请尽快联系买家<a target=\'_blank\' href=\'user/personal.jsp?tab=info&userId=1022\'>luna</a>，以下为买家的附加信息（可能为空）\n==============\nnihap', '2020-11-30 22:26:15', 31, NULL);
+INSERT INTO `message` VALUES (1, 123, '你的商品<a target=\'_blank\' href=\'goods/info.jsp?goodsId=14\'>室内物品收纳架，多功能免钉可伸缩衣柜分层隔板</a>被购买，请尽快联系买家<a target=\'_blank\' href=\'user/personal.jsp?tab=info&userId=1022\'>luna</a>，以下为买家的附加信息（可能为空）\n==============\n你好我很喜欢', '2020-12-01 17:13:38', 32, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -184,15 +184,15 @@ COMMIT;
 DROP TRIGGER IF EXISTS `notify_auditing`;
 delimiter ;;
 CREATE TRIGGER `notify_auditing` AFTER UPDATE ON `goods` FOR EACH ROW begin
-set @goodsid=new.id;
+set @goodsId=new.id;
 set @goodsname=new.name;
 set @newst=new.status;
 set @oldst=old.status;
 if ((@newst=2) and (@oldst=1)) then
-INSERT INTO `message`(mess_from_id,mess_to_id,mess_text,send_time) VALUES(1,new.producter_id,CONCAT("你的商品 ","<a target='_blank' href='goods/info.jsp?goodsid=",@goodsid,"'>",@goodsname,"</a>","已经审核通过"),now());
+INSERT INTO `message`(mess_from_id,mess_to_id,mess_text,send_time) VALUES(1,new.producter_id,CONCAT("你的商品 ","<a target='_blank' href='goods/info.jsp?goodsId=",@goodsId,"'>",@goodsname,"</a>","已经审核通过"),now());
 end if;
 if ((@newst=3) and (@oldst=1)) then
-INSERT INTO `message`(mess_from_id,mess_to_id,mess_text,send_time) VALUES(1,new.producter_id,CONCAT("你的商品 ","<a target='_blank' href='goods/info.jsp?goodsid=",@goodsid,"'>",@goodsname,"</a>","审核未通过"),now());
+INSERT INTO `message`(mess_from_id,mess_to_id,mess_text,send_time) VALUES(1,new.producter_id,CONCAT("你的商品 ","<a target='_blank' href='goods/info.jsp?goodsId=",@goodsId,"'>",@goodsname,"</a>","审核未通过"),now());
 end if;
 end
 ;;
@@ -217,10 +217,10 @@ CREATE TRIGGER `update_goods_status` AFTER INSERT ON `order` FOR EACH ROW begin
 set @buyerid=new.user_id;
 set @buyername=(select name from user where id=@buyerid);
 set @sellerid = (select producter_id from goods where id=new.goods_id);
-set @goodsid = (select id from goods where id=new.goods_id);
+set @goodsId = (select id from goods where id=new.goods_id);
 set @goodsname = (select name from goods where id=new.goods_id);
 set @sellername = (select name from `user` where id=@sellerid);
-INSERT INTO `message`(mess_from_id,mess_to_id,mess_text,send_time) VALUES (1,@sellerid,CONCAT("你的商品","<a target='_blank' href='goods/info.jsp?goodsid=",@goodsid,"'>",@goodsname,"</a>","被购买，请尽快联系买家","<a target='_blank' href='user/personal.jsp?tab=info&userid=",@buyerid,"'>",@buyername,"</a>","，以下为买家的附加信息（可能为空）
+INSERT INTO `message`(mess_from_id,mess_to_id,mess_text,send_time) VALUES (1,@sellerid,CONCAT("你的商品","<a target='_blank' href='goods/info.jsp?goodsId=",@goodsId,"'>",@goodsname,"</a>","被购买，请尽快联系买家","<a target='_blank' href='user/personal.jsp?tab=info&userId=",@buyerid,"'>",@buyername,"</a>","，以下为买家的附加信息（可能为空）
 ==============
 ",new.message),new.date);
 update goods set status=4 where id=new.goods_id;

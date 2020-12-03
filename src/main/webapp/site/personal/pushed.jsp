@@ -22,7 +22,7 @@
     if (request.getAttribute("isMe") != null) {
         user = me;
     } else {
-        user = userHandle.findById(Integer.parseInt(request.getParameter("userid")));
+        user = userHandle.findById(Integer.parseInt(request.getParameter("userId")));
     }
     List<Goods> list = null;
     list = goodsHandle.findByUserId(user.getId());
@@ -52,7 +52,7 @@
                                 <span class="label label-<%=good.getStates()==2?"info":"danger" %>">
                                 <%=good.getStates() == 2 ? "出售中" : "已被购买" %>
                                 </span>
-                            <a href="goods/info.jsp?goodsid=<%=good.getId()%>"><%=good.getName()%>
+                            <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                             </a>
                         </div>
                         <div class="row detail-goods">￥<span

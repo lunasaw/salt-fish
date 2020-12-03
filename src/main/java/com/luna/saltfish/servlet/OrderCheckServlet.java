@@ -42,7 +42,7 @@ public class OrderCheckServlet extends HttpServlet {
         OrderHandle orderHandle = new OrderHandle();
         Order order = new Order();
         // 获取来源url，只保留第一个参数goodsId
-        String fromUrl[] = request.getHeader("Referer").split("&");
+        String[] fromUrl = request.getHeader("Referer").split("&");
         if (isLogined != null && isLogined == true && userId != null && goodsId != null) {
             try {
                 order.setGoodsId(goodsId);

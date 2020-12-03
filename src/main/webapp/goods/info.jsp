@@ -48,7 +48,7 @@
 
         $(document).ready(function () {
             let searchParams = new URLSearchParams(window.location.search);
-            let goodsId = searchParams.get('goodsid');
+            let goodsId = searchParams.get('goodsId');
             collectRequest = new XMLHttpRequest();
             collectRequest.onreadystatechange = function () {
                 // 已经收藏readyState=4
@@ -99,7 +99,7 @@
 <body>
     <jsp:include page="../site/header.jsp" flush="true"/>
     <%
-        int goodsId = Integer.parseInt(request.getParameter("goodsid"));
+        int goodsId = Integer.parseInt(request.getParameter("goodsId"));
 
         Integer goodsNum = 0;
         GoodsHandle goodsHandle = new GoodsHandle();
@@ -178,7 +178,7 @@
                                 <p>
                                     发布者：
                                     <a target="_blank"
-                                       href="user/personal.jsp?tab=info&userid=<%=Procuteuser.getId()%>">${Procuteuser.getName()}</a>
+                                       href="user/personal.jsp?tab=info&userId=<%=Procuteuser.getId()%>">${Procuteuser.getName()}</a>
                                     (联系:<a href="mailto:<%=Procuteuser.getEmail()%>">${Procuteuser.getEmail()}
                                 </a>
                                     或
@@ -222,7 +222,7 @@
                                                 if (user != null)
                                                     userId = user.getId();
                                             %>
-                                            <form action="OrderCheckServlet?goodsId=<%=request.getParameter("goodsid")%>&userId=<%=userId%>"
+                                            <form action="OrderCheckServlet?goodsId=<%=request.getParameter("goodsId")%>&userId=<%=userId%>"
                                                   method="post">
                                                 <div class="form-group">
                                                     <textarea class="form-control" name="message-to-seller"

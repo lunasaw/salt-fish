@@ -81,14 +81,16 @@ public class BuyAllShopcartServlet extends HttpServlet {
             if (listSuc.size() > 0) {
                 resOut.println("<p>物品：</p><p>");
                 for (int i = 0; i < listSuc.size(); i++) {
-                    resOut.println("<a href=\"goods/info.jsp?goodsid=" + listSuc.get(i).getId() + "\">" + listSuc.get(i).getName() + "</a>　");
+                    resOut.println("<a href=\"goods/info.jsp?goodsId=" + listSuc.get(i).getId() + "\">"
+                        + listSuc.get(i).getName() + "</a>　");
                 }
                 resOut.println("</p><p>购买成功!</p>");
             }
             if (listErr.size() > 0) {
                 resOut.println("<p>物品：</p><p>");
                 for (int i = 0; i < listErr.size(); i++) {
-                    resOut.println("<a href=\"goods/info.jsp?goodsid=" + listErr.get(i).getId() + "\">" + listErr.get(i).getName() + "</a>　");
+                    resOut.println("<a href=\"goods/info.jsp?goodsId=" + listErr.get(i).getId() + "\">"
+                        + listErr.get(i).getName() + "</a>　");
                 }
                 resOut.println("</p><p>购买失败</p>");
             }

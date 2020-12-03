@@ -35,7 +35,7 @@ public class RemoveCollectServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer goodsId = Integer.parseInt(request.getParameter("goodsid"));
+        Integer goodsId = Integer.parseInt(request.getParameter("goodsId"));
         if (LoginVerify.isLogin(request)) {
             User loginUser = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int loginUserId = loginUser.getId();

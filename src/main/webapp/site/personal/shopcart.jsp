@@ -42,7 +42,7 @@
                         <div class="col-md-9">
                             <div class="row detail-goods lead">
                                 <div>
-                                    <a href="goods/info.jsp?goodsid=<%=good.getId()%>"><%=good.getName()%>
+                                    <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                                     </a>
                                     <button type="button" onclick="shopcart_remove(<%=good.getId() %>)"
                                             class="pull-right btn btn-success">

@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="row detail-goods lead">
-                                    <a href="goods/info.jsp?goodsid=<%=good.getId()%>">
+                                    <a href="goods/info.jsp?goodsId=<%=good.getId()%>">
                                         <%
                                             String name = good.getName();
                                             int tmp;

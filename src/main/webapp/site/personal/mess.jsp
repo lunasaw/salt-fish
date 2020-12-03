@@ -48,9 +48,9 @@
             String handle = request.getParameter("handle");
             Boolean isWrite = (handle != null && handle.equals("write")) ? true : false;
         %>
-        <a href="<%=basePath%>user/personal.jsp?tab=mess&userid=<%=me.getId()%>">我的消息</a>
+        <a href="<%=basePath%>user/personal.jsp?tab=mess&userId=<%=me.getId()%>">我的消息</a>
         /
-        <a href="<%=basePath%>user/personal.jsp?tab=mess&handle=write&userid=<%=me.getId()%>">发送站内信</a>
+        <a href="<%=basePath%>user/personal.jsp?tab=mess&handle=write&userId=<%=me.getId()%>">发送站内信</a>
     </div>
     <div class="panel-body">
         <%if (!isWrite) {%>
@@ -94,7 +94,7 @@
         }
     %>
     来自
-    <a target="_blank" href="<%=basePath %>user/personal.jsp?tab=info&userid=<%=user.getId() %>">
+    <a target="_blank" href="<%=basePath %>user/personal.jsp?tab=info&userId=<%=user.getId() %>">
     <%
         if (user.getName() == null || user.getName().length() == 0) {
             out.print(user.getEmail());
@@ -112,7 +112,7 @@
     </span>
                 <div style="display:none" id="cz-bt-<%=mess.getMessId() %>">
                     <button type="button" class="btn btn-xs btn-success"
-                            onclick="window.open('<%=basePath%>user/personal.jsp?tab=mess&handle=write&toemail=<%=user.getEmail()%>%20==>%20<%=user.getName()%>&userid=<%=me.getId()%>')">
+                            onclick="window.open('<%=basePath%>user/personal.jsp?tab=mess&handle=write&toemail=<%=user.getEmail()%>%20==>%20<%=user.getName()%>&userId=<%=me.getId()%>')">
                         回复
                     </button>
                     <button type="button" class="btn btn-xs btn-danger"
@@ -141,13 +141,13 @@
         <nav>
             <ul class="pager">
                 <li class=""><a class="page-cut-btn"
-                                href="user/personal.jsp?tab=mess&userid=<%=me.getId()%>&pn=<%=pn<=1?1:pn-1%>"><span
+                                href="user/personal.jsp?tab=mess&userId=<%=me.getId()%>&pn=<%=pn<=1?1:pn-1%>"><span
                         aria-hidden="true"></span><%=pn > 1 ? "上一页" : "位于首页"%>
                 </a></li>
                 <li style=""><span style="border:0">    　　第<span style="color:red;border:0"><%=pn %></span>页　　</span>
                 </li>
                 <li class=""><a class="page-cut-btn"
-                                href="user/personal.jsp?tab=mess&userid=<%=me.getId()%>&pn=<%=pn>=maxPage?pn:pn+1%>"><%=pn < maxPage ? "下一页" : "位于末页"%><span
+                                href="user/personal.jsp?tab=mess&userId=<%=me.getId()%>&pn=<%=pn>=maxPage?pn:pn+1%>"><%=pn < maxPage ? "下一页" : "位于末页"%><span
                         aria-hidden="true"></span></a></li>
             </ul>
         </nav>

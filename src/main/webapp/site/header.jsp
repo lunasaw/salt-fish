@@ -60,10 +60,10 @@
                 <%
                     if (isLogined != null && user != null && isLogined == true) {
                 %>
-                <li><a href="user/personal.jsp?tab=shopcart&userid=<%=user.getId()%>">购物车(<span style="color: #d00;"
+                <li><a href="user/personal.jsp?tab=shopcart&userId=<%=user.getId()%>">购物车(<span style="color: #d00;"
                                                                                                 id="goodsNum"><%=goodsNum %></span>)</a>
                 </li>
-                <li><a href="user/personal.jsp?tab=mess&userid=<%=user.getId()%>">消息(<span id="mess-number"
+                <li><a href="user/personal.jsp?tab=mess&userId=<%=user.getId()%>">消息(<span id="mess-number"
                                                                                            style="color: #e00;"
                                                                                            id="messNum"><%=messNum %></span>)</a>
                 </li>
@@ -72,16 +72,16 @@
                                         aria-haspopup="true" aria-expanded="false"><%=email%> <span
                         class="caret"></span> </a>
                     <ul class="dropdown-menu">
-                        <li><a href="<%=basePath %>user/personal.jsp?userid=<%=user.getId()%>&tab=info">个人中心</a></li>
+                        <li><a href="<%=basePath %>user/personal.jsp?userId=<%=user.getId()%>&tab=info">个人中心</a></li>
                         <%if (LoginVerify.isAdmin(request)) {%>
-                        <li><a href="<%=basePath %>user/personal.jsp?userid=<%=user.getId()%>&tab=auditing">物品审核</a>
+                        <li><a href="<%=basePath %>user/personal.jsp?userId=<%=user.getId()%>&tab=auditing">物品审核</a>
                         </li>
                         <%}%>
-                        <li><a href="<%=basePath %>user/personal.jsp?userid=<%=user.getId()%>&tab=history">购买历史</a></li>
-                        <li><a href="<%=basePath %>user/personal.jsp?userid=<%=user.getId()%>&tab=push">发布物品</a></li>
-                        <li><a href="<%=basePath %>user/personal.jsp?userid=<%=user.getId()%>&tab=like">收藏夹</a></li>
+                        <li><a href="<%=basePath %>user/personal.jsp?userId=<%=user.getId()%>&tab=history">购买历史</a></li>
+                        <li><a href="<%=basePath %>user/personal.jsp?userId=<%=user.getId()%>&tab=push">发布物品</a></li>
+                        <li><a href="<%=basePath %>user/personal.jsp?userId=<%=user.getId()%>&tab=like">收藏夹</a></li>
                         <!-- 并不需要设置页
-					<li><a href="<%=basePath %>user/personal.jsp?userid=<%=user.getId()%>&tab=setting">设置</a></li>
+					<li><a href="<%=basePath %>user/personal.jsp?userId=<%=user.getId()%>&tab=setting">设置</a></li>
 					-->
                         <li><a href="<%=basePath %>ExitLoginServlet">退出登录</a></li>
                     </ul>

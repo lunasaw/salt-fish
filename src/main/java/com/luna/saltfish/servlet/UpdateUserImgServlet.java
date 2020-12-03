@@ -17,8 +17,11 @@ import java.io.IOException;
 /**
  * Servlet implementation class GoodsCheckServlet
  */
-//用户头像更新
-//限制10MB大小
+
+/**
+ * 用户头像更新
+ * //限制10MB大小
+ */
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/UpdateUserImgServlet")
 /**
@@ -61,6 +64,7 @@ public class UpdateUserImgServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+
             userHandle.close();
         }
     }

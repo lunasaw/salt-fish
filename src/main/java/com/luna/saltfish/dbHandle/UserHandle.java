@@ -8,6 +8,7 @@ import com.luna.saltfish.vo.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,19 +70,25 @@ public class UserHandle{
 		ResultSet rs = this.pstmt.executeQuery() ;
 		User user = null ;
 		while(rs.next()){
-			user = new User() ;
-			user.setId(rs.getInt(1)) ;
-			user.setEmail(rs.getString(2)) ;
-			user.setPwd(rs.getString(3)) ;
-			user.setName(rs.getString(4)) ;
-			user.setStuNum(rs.getString(5)) ;
-			all.add(user) ;
-		}
-		this.pstmt.close() ;
-		return all ;
-	}
-	
-	public boolean emptyMessnum(User user) throws Exception{
+            user = getUser(rs);
+            all.add(user);
+        }
+        this.pstmt.close();
+        return all;
+    }
+
+    public User getUser(ResultSet rs) throws SQLException {
+        User user;
+        user = new User();
+        user.setId(rs.getInt(1));
+        user.setEmail(rs.getString(2));
+        user.setPwd(rs.getString(3));
+        user.setName(rs.getString(4));
+        user.setStuNum(rs.getString(5));
+        return user;
+    }
+
+    public boolean emptyMessnum(User user) throws Exception {
 	    String sql = "update user set mess_num=0 WHERE id="+user.getId();
 	    this.pstmt = this.conn.prepareStatement(sql) ;
 	    if(this.pstmt.executeUpdate(sql)>0){
@@ -104,13 +111,8 @@ public class UserHandle{
 		this.pstmt.setInt(1,id) ;
 		ResultSet rs = this.pstmt.executeQuery();
 		if(rs.next()){
-			user = new User() ;
-			user.setId(rs.getInt(1)) ;
-			user.setEmail(rs.getString(2)) ;
-			user.setPwd(rs.getString(3)) ;
-			user.setName(rs.getString(4)) ;
-			user.setStuNum(rs.getString(5)) ;
-			user.setPhone(rs.getString(6)) ;
+            user = getUser(rs);
+            user.setPhone(rs.getString(6));
 			user.setImg(rs.getString(8)) ;
 			user.setMessnum(rs.getInt(7)) ;
 		}
@@ -132,13 +134,8 @@ public class UserHandle{
 		this.pstmt.setString(1,str) ;
 		ResultSet rs = this.pstmt.executeQuery() ;
 		if(rs.next()){
-			user = new User() ;
-			user.setId(rs.getInt(1)) ;
-			user.setEmail(rs.getString(2)) ;
-			user.setPwd(rs.getString(3)) ;
-			user.setName(rs.getString(4)) ;
-			user.setStuNum(rs.getString(5)) ;
-			user.setPhone(rs.getString(6)) ;
+            user = getUser(rs);
+            user.setPhone(rs.getString(6));
 			user.setImg(rs.getString(8)) ;
 			user.setMessnum(rs.getInt(7)) ;
 		}

@@ -11,17 +11,17 @@
     Boolean isLogin = LoginVerify.isLogin(request);
     User me = null;
     User user = null;
-    Integer userid = 0;
-    if (request.getParameter("userid") != null && request.getParameter("userid").length() != 0) {
+    Integer userId = 0;
+    if (request.getParameter("userId") != null && request.getParameter("userId").length() != 0) {
         UserHandle userHandle = new UserHandle();
-        userid = Integer.parseInt(request.getParameter("userid"));
-        user = userHandle.findById(userid);
+        userId = Integer.parseInt(request.getParameter("userId"));
+        user = userHandle.findById(userId);
         userHandle.close();
     }
 
     if (isLogin) {
         me = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
-        if ((userid != 0 && me.getId() == user.getId()) || userid == 0) {
+        if ((userId != 0 && me.getId() == user.getId()) || userId == 0) {
             isMe = true;
             user = me;
             request.setAttribute("isMe", true);
@@ -59,7 +59,7 @@
                                 </div>
 
                             </div>
-                            <a href="user/personal.jsp?tab=info&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=info&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("info")?"active":"" %>">
                                 个人信息</a>
 
@@ -70,35 +70,35 @@
                                 if (LoginVerify.isAdmin(request)) {
                             %>
 
-                            <a href="user/personal.jsp?tab=auditing&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=auditing&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("auditing")?"active":"" %>">
                                 物品审核</a>
                             <%}%>
-                            <a href="user/personal.jsp?tab=mess&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=mess&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("mess")?"active":"" %>">
                                 站内消息</a>
-                            <a href="user/personal.jsp?tab=shopcart&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=shopcart&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("shopcart")?"active":"" %>">
                                 购物车</a>
-                            <a href="user/personal.jsp?tab=history&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=history&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("history")?"active":"" %>">
                                 购买历史</a>
-                            <a href="user/personal.jsp?tab=pushed&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=pushed&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("pushed")?"active":"" %>">
                                 我发布的</a>
-                            <a href="user/personal.jsp?tab=push&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=push&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("push")?"active":"" %>">
                                 发布商品</a>
-                            <a href="user/personal.jsp?tab=like&pn=1&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=like&pn=1&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("like")?"active":"" %>">
                                 收藏夹 </a>
                             <!-- 并不需要设置页
-							<a href="user/personal.jsp?tab=setting&userid=<%=user.getId() %>" 
+							<a href="user/personal.jsp?tab=setting&userId=<%=user.getId() %>"
 							class="list-group-item <%=tab.equals("setting")?"active":"" %>">
 							设置</a>
 							-->
                             <%} else {%>
-                            <a href="user/personal.jsp?tab=pushed&userid=<%=user.getId() %>"
+                            <a href="user/personal.jsp?tab=pushed&userId=<%=user.getId() %>"
                                class="list-group-item <%=tab.equals("pushed")?"active":"" %>">
                                 他发布的商品</a>
                             <%}%>

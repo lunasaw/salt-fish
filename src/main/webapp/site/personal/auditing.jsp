@@ -16,23 +16,23 @@ status说明：
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <script>
-    function passGoods(goodsid, type) {
+    function passGoods(goodsId, type) {
         xmlGoods = new XMLHttpRequest();
         xmlGoods.onreadystatechange = function () {
             if (xmlGoods.readyState == 4 && xmlGoods.status == 200) {
                 if (xmlGoods.responseText == "success") {
                     if (type == "pass") {
-                        document.getElementById("auditing-button-" + goodsid).innerHTML = "<p class=\"bg-info\">已通过</p>";
+                        document.getElementById("auditing-button-" + goodsId).innerHTML = "<p class=\"bg-info\">已通过</p>";
                     }
                     if (type == "refuse") {
-                        document.getElementById("auditing-button-" + goodsid).innerHTML = "<p class=\"bg-danger\">已拒绝</p>";
+                        document.getElementById("auditing-button-" + goodsId).innerHTML = "<p class=\"bg-danger\">已拒绝</p>";
                     }
                 }
             } else {
-                //document.getElementById("auditing-button-"+goodsid).innerHTML="=操作中=";
+                //document.getElementById("auditing-button-"+goodsId).innerHTML="=操作中=";
             }
         }
-        xmlGoods.open("GET", "AuditingServlet?goodsid=" + goodsid + "&t=" + Math.random() + (type == "pass" ? "&hd=1" : "&hd=0"), true);
+        xmlGoods.open("GET", "AuditingServlet?goodsId=" + goodsId + "&t=" + Math.random() + (type == "pass" ? "&hd=1" : "&hd=0"), true);
         xmlGoods.send(null);
     }
 </script>
@@ -85,7 +85,7 @@ status说明：
                     style="width: 15%;"><%=new SimpleDateFormat("yyyy/MM/dd HH:mm").format(goods.getCreatDate())%>
                 </td>
                 <td class="td-user-name"
-                    style="width: 15%;"><%="<a target='_blank' href=" + "goods/info.jsp?goodsid=" + goods.getId() + ">" + goods.getName() + "</a>"%>
+                    style="width: 15%;"><%="<a target='_blank' href=" + "goods/info.jsp?goodsId=" + goods.getId() + ">" + goods.getName() + "</a>"%>
                 </td>
                 <td class="td-user-name" style="width: 15%;"><abbr
                         title="<%=goods.getContent()%>">[详情]</abbr>

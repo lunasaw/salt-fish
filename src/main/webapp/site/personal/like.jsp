@@ -58,7 +58,7 @@
                                 <span class="label label-<%=good.getStates()==2?"info":"danger" %>">
                                 <%=good.getStates() == 2 ? "出售中" : "已被购买" %>
                                 </span>
-                        <a href="goods/info.jsp?goodsid=<%=good.getId()%>"><%=good.getName()%>
+                        <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                         </a>
                     </div>
                     <div class="row detail-goods">￥<span class="text-danger"><%=Math.round(good.getPrice()) %></span>
@@ -92,12 +92,12 @@
     <nav>
         <ul class="pager">
             <li class=""><a class="page-cut-btn"
-                            href="user/personal.jsp?tab=like&pn=<%=pn<=1?pn:pn-1%>&userid=<%=user.getId()%>"><span
+                            href="user/personal.jsp?tab=like&pn=<%=pn<=1?pn:pn-1%>&userId=<%=user.getId()%>"><span
                     aria-hidden="true"></span><%=pn > 1 ? "上一页" : "位于首页"%>
             </a></li>
             <li style=""><span style="border:0">    　　第<span style="color:red;border:0"><%=pn %></span>页　　</span></li>
             <li class=""><a class="page-cut-btn"
-                            href="user/personal.jsp?tab=like&pn=<%=pn<maxPage?pn+1:pn%>&userid=<%=user.getId()%>"><%=pn < maxPage ? "下一页" : "位于末页"%>
+                            href="user/personal.jsp?tab=like&pn=<%=pn<maxPage?pn+1:pn%>&userId=<%=user.getId()%>"><%=pn < maxPage ? "下一页" : "位于末页"%>
                 <span aria-hidden="true"></span></a></li>
         </ul>
     </nav>
@@ -114,17 +114,17 @@
         $(objDiv).css("display", "none");
     }
 
-    function delete_collect(goodsid) {
+    function delete_collect(goodsId) {
         collectRemove = new XMLHttpRequest();
         collectRemove.onreadystatechange = function () {
             if (collectRemove.readyState == 4 && collectRemove.status == 200) {
                 if (collectRemove.responseText == "success") {
-                    cnode = document.getElementById("re-bt-" + goodsid);
+                    cnode = document.getElementById("re-bt-" + goodsId);
                     cnode.innerHTML = "已从收藏夹移除";
                 }
             }
         }
-        collectRemove.open("GET", "RemoveCollectServlet?goodsid=" + goodsid + "&t=" + Math.random(), true);
+        collectRemove.open("GET", "RemoveCollectServlet?goodsId=" + goodsId + "&t=" + Math.random(), true);
         collectRemove.send(null);
     }
 

@@ -129,7 +129,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="row detail-goods lead">
-                                    <a href="goods/info.jsp?goodsid=<%=good.getId()%>"><%=good.getName()%>
+                                    <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                                     </a>
                                 </div>
                                 <div class="row detail-goods">
