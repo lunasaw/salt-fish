@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : luna-collage-remote
+ Source Server         : luna-tencent
  Source Server Type    : MySQL
- Source Server Version : 50731
- Source Host           : f.xicc.cc:23315
- Source Schema         : luna-shop
+ Source Server Version : 50728
+ Source Host           : 111.229.114.126:3307
+ Source Schema         : salt-fish
 
  Target Server Type    : MySQL
- Target Server Version : 50731
+ Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 01/12/2020 09:48:24
+ Date: 03/12/2020 08:17:15
 */
 
 SET NAMES utf8mb4;
@@ -22,15 +22,18 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `collect`;
 CREATE TABLE `collect` (
-  `user_id` int(11) NOT NULL,
-  `goods_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `collect_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户编号',
+  `goods_id` int(11) NOT NULL COMMENT '收集物品编号',
+  PRIMARY KEY (`collect_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of collect
 -- ----------------------------
 BEGIN;
+INSERT INTO `collect` VALUES (1, 1022, 14);
+INSERT INTO `collect` VALUES (2, 1022, 15);
 COMMIT;
 
 -- ----------------------------
@@ -68,7 +71,7 @@ INSERT INTO `goods` VALUES (10, 'static/goods_img/10.jpg', 2, '纯棉枕头', 1,
 INSERT INTO `goods` VALUES (11, 'static/goods_img/11.jpg', 2, 'LED台灯，学习卧室床头书桌大学生寝室插电节能USB调光夹子台灯', 1, 100, 2, '灯光颜色默认自然光，轻微偏黄的灯光颜色，台灯默认USB接口，台灯供电方式：1，可用一切手机充电器直接插220V家用插座。 2，可接电脑USB。 3，可接手机充电宝供电。（注：这款不是充电台灯，不带蓄电池，必须连着电源使用）', 123, '2015-12-23 16:29:32');
 INSERT INTO `goods` VALUES (12, 'static/goods_img/12.jpg', 1, '《c primer plus(第五版)中文版》C语言经典入门书籍', 1, 23, 2, '只翻过几次，几乎全新。', 10, '2015-12-24 01:02:27');
 INSERT INTO `goods` VALUES (13, 'static/goods_img/13.jpg', 4, '诺基亚830手机', 1, 1200, 2, '购买时间在一年内，无保修，屏幕无划痕或坏点，机身有破裂损伤，完全正常，曾无拆无修，待机时长超过2天。相关配件有原装电池。', 10, '2015-12-24 01:08:58');
-INSERT INTO `goods` VALUES (14, 'static/goods_img/14.jpg', 2, '室内物品收纳架，多功能免钉可伸缩衣柜分层隔板', 1, 11, 2, '多功能免钉无痕衣柜分层架，', 123, '2015-12-24 09:26:42');
+INSERT INTO `goods` VALUES (14, 'static/goods_img/14.jpg', 2, '室内物品收纳架，多功能免钉可伸缩衣柜分层隔板', 1, 11, 4, '多功能免钉无痕衣柜分层架，', 123, '2015-12-24 09:26:42');
 INSERT INTO `goods` VALUES (15, 'static/goods_img/15.jpg', 3, '沃曼威斯韩版夜光双肩包大容量个性背包', 1, 50, 2, '书包，8成新\r\n', 123, '2015-12-24 09:36:38');
 INSERT INTO `goods` VALUES (16, 'static/goods_img/16.jpg', 4, '华为荣耀4x手机', 1, 450, 4, '移动4g标配版在保九新，京东抢购的，配件发票箱盒齐全，已经贴好钢化膜，送一软壳，便框有些许磕碰，不明显，屏幕右上方有出厂黄斑，4x通病，买回来就这样，无拆无修，特价处理。不议价，顺丰到付。', 10, '2015-12-24 15:30:13');
 INSERT INTO `goods` VALUES (17, 'static/goods_img/17.jpg', 4, '畅学STM32开发学习板，配套stm32f103c8t6最小系统核心板', 1, 67, 1, '畅学STM32开发学习板，所有模块均可用', 10, '2015-12-24 15:34:45');
@@ -88,13 +91,14 @@ CREATE TABLE `message` (
   `mess_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `mess_type` int(11) DEFAULT NULL,
   PRIMARY KEY (`mess_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of message
 -- ----------------------------
 BEGIN;
 INSERT INTO `message` VALUES (1, 10, '你的商品<a target=\'_blank\' href=\'goods/info.jsp?goodsid=16\'>华为荣耀4x手机</a>被购买，请尽快联系买家<a target=\'_blank\' href=\'user/personal.jsp?tab=info&userid=1022\'>luna</a>，以下为买家的附加信息（可能为空）\n==============\nnihap', '2020-11-30 22:26:15', 31, NULL);
+INSERT INTO `message` VALUES (1, 123, '你的商品<a target=\'_blank\' href=\'goods/info.jsp?goodsid=14\'>室内物品收纳架，多功能免钉可伸缩衣柜分层隔板</a>被购买，请尽快联系买家<a target=\'_blank\' href=\'user/personal.jsp?tab=info&userid=1022\'>luna</a>，以下为买家的附加信息（可能为空）\n==============\n你好我很喜欢', '2020-12-01 17:13:38', 32, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -115,6 +119,7 @@ CREATE TABLE `order` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `order` VALUES (1, 16, 1022, '2020-11-30 22:26:15', 'nihap');
+INSERT INTO `order` VALUES (2, 14, 1022, '2020-12-01 17:13:38', '你好我很喜欢');
 COMMIT;
 
 -- ----------------------------
@@ -122,16 +127,23 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `shoppingcart`;
 CREATE TABLE `shoppingcart` (
-  `id` int(11) NOT NULL,
-  `goodsId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `shop_id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`shop_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of shoppingcart
 -- ----------------------------
 BEGIN;
+INSERT INTO `shoppingcart` VALUES (1, 14, 1022);
+INSERT INTO `shoppingcart` VALUES (2, 15, 1022);
+INSERT INTO `shoppingcart` VALUES (3, 15, 1022);
+INSERT INTO `shoppingcart` VALUES (4, 15, 1022);
+INSERT INTO `shoppingcart` VALUES (5, 15, 1022);
+INSERT INTO `shoppingcart` VALUES (6, 15, 1022);
+INSERT INTO `shoppingcart` VALUES (7, 15, 1022);
 COMMIT;
 
 -- ----------------------------
@@ -156,11 +168,11 @@ CREATE TABLE `user` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `user` VALUES (NULL, 0, '', '385895e41f65a63bdfb93b9d2048e69d', 'luna', NULL, NULL, NULL, 0);
-INSERT INTO `user` VALUES ('static/user_img/9', 9, 'dandan@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '陈章月', NULL, NULL, '', 0);
-INSERT INTO `user` VALUES ('static/user_img/10', 10, 'veekxt@gmail.com', '385895e41f65a63bdfb93b9d2048e69d', '韩志强', NULL, NULL, '15256925578', 1);
-INSERT INTO `user` VALUES ('static/user_img/123', 123, '1300573251@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '王华强', NULL, NULL, NULL, 0);
-INSERT INTO `user` VALUES ('static/user_img/0', 1017, '1050026@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '赵文军', NULL, NULL, '13245634567', 0);
-INSERT INTO `user` VALUES ('static/user_img/1019', 1019, '18256989168@163.com', '385895e41f65a63bdfb93b9d2048e69d', '罗杰', NULL, NULL, NULL, 0);
+INSERT INTO `user` VALUES ('static/user_img/9', 9, '1173282254@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '陈章月', NULL, NULL, '', 0);
+INSERT INTO `user` VALUES ('static/user_img/10', 10, '1159891180@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '韩志强', NULL, NULL, '15256925578', 1);
+INSERT INTO `user` VALUES ('static/user_img/123', 123, '2236188843@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '王华强', NULL, NULL, NULL, 1);
+INSERT INTO `user` VALUES ('static/user_img/0', 1017, '865616284@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '赵文军', NULL, NULL, '13245634567', 0);
+INSERT INTO `user` VALUES ('static/user_img/1019', 1019, '864636142@qq.com', '385895e41f65a63bdfb93b9d2048e69d', '罗杰', NULL, NULL, NULL, 0);
 INSERT INTO `user` VALUES (NULL, 1020, '121@qq.com', '385895e41f65a63bdfb93b9d2048e69d', NULL, NULL, NULL, NULL, 0);
 INSERT INTO `user` VALUES (NULL, 1021, 'leilei@qq.com', '385895e41f65a63bdfb93b9d2048e69d', NULL, NULL, NULL, NULL, 0);
 INSERT INTO `user` VALUES (NULL, 1022, 'luna_nov@163.com', '385895e41f65a63bdfb93b9d2048e69d', 'luna', NULL, NULL, NULL, 0);

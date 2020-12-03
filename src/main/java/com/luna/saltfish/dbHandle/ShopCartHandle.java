@@ -53,10 +53,11 @@ public class ShopCartHandle {
     public boolean checkShoppingCart(int userId, int goodsId) throws Exception {
         ResultSet rs = null;
         try {
-            String sql = "select shop_id from shoppingcart where user_id= " + userId + " and goods_id= " + goodsId;
+            String sql = "select count(*) from shoppingcart where user_id= " + userId + " and goods_id= " + goodsId;
             this.pstmt = this.conn.prepareStatement(sql);
             rs = this.pstmt.executeQuery();
-            return rs.next();
+            rs.next();
+            return rs.getInt(1) > 0;
         } finally {
             rs.close();
         }
@@ -64,7 +65,7 @@ public class ShopCartHandle {
     }
 
     /**
-     * 增加一条购物车记录，goodsNum已废弃
+     * 增加一条购物车记录
      * 
      * @param goodsId
      * @param userId

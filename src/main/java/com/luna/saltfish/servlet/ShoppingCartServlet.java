@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.GoodsStatusConstant;
 import com.luna.saltfish.dbHandle.GoodsHandle;
 import com.luna.saltfish.dbHandle.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
@@ -15,6 +16,8 @@ import java.io.IOException;
 
 /**
  * 添加一个物品到购物车
+ * 
+ * @author luna
  */
 @WebServlet("/ShoppingCartServlet")
 public class ShoppingCartServlet extends HttpServlet {
@@ -43,7 +46,8 @@ public class ShoppingCartServlet extends HttpServlet {
                 goodsHandle.close();
             }
             try {
-                if (goods != null && goods.getStates() == 2 && shopCartHandle.doSaveShoppingCart(goodsId, userId)) {
+                if (goods != null && goods.getStates().equals(GoodsStatusConstant.UNSOLD)
+                    && shopCartHandle.doSaveShoppingCart(goodsId, userId)) {
                     response.getWriter().print("success");
                 } else {
                     response.getWriter().print("error");
