@@ -170,7 +170,7 @@
                                     <br/>
                                 </p>
                                 <p>
-                                    价格：${good.price}<br/>
+                                    价格：${good.getPrice()}<br/>
                                     <br/>
                                 </p>
 
@@ -283,7 +283,7 @@
     <jsp:include page="../site/footer.jsp"/>
 </body>
 </html>
-<%--<%--%>
-<%--    userHandle.close();--%>
-<%--    goodsHandle.close();--%>
-<%--%>--%>
+<%
+    userHandle.close();
+    goodsHandle.close();
+%>

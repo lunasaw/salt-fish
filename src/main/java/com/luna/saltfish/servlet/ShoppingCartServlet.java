@@ -43,7 +43,7 @@ public class ShoppingCartServlet extends HttpServlet {
                 goodsHandle.close();
             }
             try {
-                if (goods != null && goods.getStates() == 2 && shopCartHandle.doSaveShoppingCart(0, goodsId, userId)) {
+                if (goods != null && goods.getStates() == 2 && shopCartHandle.doSaveShoppingCart(goodsId, userId)) {
                     response.getWriter().print("success");
                 } else {
                     response.getWriter().print("error");

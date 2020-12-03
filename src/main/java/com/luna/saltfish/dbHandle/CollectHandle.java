@@ -64,20 +64,18 @@ public class CollectHandle {
      * @throws Exception
      */
     public boolean doCreate(int userId, int goodsId) throws Exception {
-        boolean flag = checkCollect(userId, goodsId);
-        if (flag != true) {
-            String sql = "insert into `collect` (user_id, goods_id) values (?,?)";
-            this.pstmt = this.conn.prepareStatement(sql);
-            this.pstmt.setInt(1, userId);
-            this.pstmt.setInt(2, goodsId);
-            ResultSet rs = this.pstmt.executeQuery();
-            if (this.pstmt.executeUpdate() > 0) {
-                flag = true;
+        if (!checkCollect(userId, goodsId)) {
+            try {
+                String sql = "insert into `collect` (user_id, goods_id) values (?,?)";
+                this.pstmt = this.conn.prepareStatement(sql);
+                this.pstmt.setInt(1, userId);
+                this.pstmt.setInt(2, goodsId);
+                return this.pstmt.executeUpdate() > 0;
+            } finally {
+                this.pstmt.close();
             }
-
-            this.pstmt.close();
         }
-        return flag;
+        return true;
     }
 
     /**

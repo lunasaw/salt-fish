@@ -9,10 +9,19 @@ public class CharSet implements Filter {
     public CharSet() {
     }
 
+    @Override
     public void destroy() {
     }
 
-    //过滤器：设置编码,统一使用UTF-8
+    /**
+     * 过滤器：设置编码,统一使用UTF-8
+     * 
+     * @param request
+     * @param response
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");

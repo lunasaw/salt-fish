@@ -57,25 +57,7 @@ public class OrderHandle {
         String sql = "select id,num,content,type_id,image,producter_id,price,create_date,name from `goods` where id=any(SELECT goods_id from `order`  where user_id=?)";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setInt(1, userId);
-        ResultSet rs = this.pstmt.executeQuery();
-        while (rs.next()) {
-            Goods good = new Goods();
-            good.setId(rs.getInt(1));
-            good.setNum(rs.getInt(2));
-            good.setContent(rs.getString(3));
-            good.setTypeId(rs.getInt(4));
-            good.setImage(rs.getString(5));
-            good.setProducterId(rs.getInt(6));
-            good.setPrice(rs.getFloat(7));
-            good.setName(rs.getString(9));
-            java.sql.Timestamp timeStamp = rs.getTimestamp(8);
-            java.util.Date date = new java.util.Date(timeStamp.getTime());
-            good.setCreatDate(date);
-            all.add(good);
-        }
-        rs.close();
-        this.pstmt.close();
-        return all;
+        return ShopCartHandle.getGoods(all, this.pstmt);
     }
 
     public void close() {
