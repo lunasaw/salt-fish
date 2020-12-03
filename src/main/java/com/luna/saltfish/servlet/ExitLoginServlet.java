@@ -1,5 +1,7 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -21,7 +23,7 @@ public class ExitLoginServlet extends HttpServlet {
 
     //退出登录，移除cookies和session属性
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().setAttribute("isLogined", false);
+        request.getSession().setAttribute(UserLoginConstant.IS_LOGIN, false);
         Cookie[] cookies = request.getCookies();
         for (int i = 0; i < cookies.length; ++i) {
             if ("LOGIN_EMAIL".equals(cookies[i].getName())) {

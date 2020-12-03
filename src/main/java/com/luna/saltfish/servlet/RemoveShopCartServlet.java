@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
@@ -37,7 +38,7 @@ public class RemoveShopCartServlet extends HttpServlet {
 
         Integer goodsId = Integer.parseInt(request.getParameter("goodsId"));
         if (LoginVerify.isLogin(request)) {
-            User loginUser = (User) request.getSession().getAttribute("loginUser");
+            User loginUser = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int loginUserId = loginUser.getId();
             ShopCartHandle shopCartHandle = new ShopCartHandle();
             try {

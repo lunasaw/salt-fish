@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.MessHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
@@ -31,7 +32,7 @@ public class RemoveMessServlet extends HttpServlet {
         }
         Integer messId = Integer.parseInt(request.getParameter("messid"));
         if (LoginVerify.isLogin(request)) {
-            User user = (User) request.getSession().getAttribute("loginUser");
+            User user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int userId = user.getId();
             MessHandle messHandle = new MessHandle();
             try {

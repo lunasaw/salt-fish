@@ -1,4 +1,4 @@
-<%@page import="com.luna.saltfish.tools.IntHolder" %>
+<%@page import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.constant.*" %>
 <%/*
 个人信息页，被/personal包含，非自己只显示公开信息
 */%>
@@ -10,7 +10,7 @@
         request.getRequestDispatcher("../../user/login.jsp?login-info=" + java.net.URLEncoder.encode("你应该先登录，之后从个人中心进入消息页", "UTF-8")).forward(request, response);
         return;
     }
-    User me = (User) session.getAttribute("loginUser");
+    User me = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
 
     int pn = 1;
     String tmpString = request.getParameter("pn");

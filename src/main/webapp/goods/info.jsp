@@ -1,6 +1,6 @@
 <%@page import="com.luna.saltfish.dbHandle.UserHandle" %>
 <%@page
-        import="com.luna.saltfish.dbHandle.GoodsHandle,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
+        import="com.luna.saltfish.dbHandle.GoodsHandle,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
 %>
 <%/*
 物品详情页，包含详情和操作按钮
@@ -217,12 +217,12 @@
                                                 请输入给卖家的附加消息，然后点击 "确定" 按钮，我们将会通知卖家。
                                             </p>
                                             <%
-                                                User guser = (User) session.getAttribute("loginUser");
-                                                int guserid = 0;
-                                                if (guser != null)
-                                                    guserid = guser.getId();
+                                                User user = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
+                                                int userId = 0;
+                                                if (user != null)
+                                                    userId = user.getId();
                                             %>
-                                            <form action="OrderCheckServlet?goodsid=<%=request.getParameter("goodsid")%>&userid=<%=guserid%>"
+                                            <form action="OrderCheckServlet?goodsId=<%=request.getParameter("goodsid")%>&userId=<%=userId%>"
                                                   method="post">
                                                 <div class="form-group">
                                                     <textarea class="form-control" name="message-to-seller"

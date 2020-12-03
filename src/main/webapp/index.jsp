@@ -1,5 +1,5 @@
 <%@page import="com.luna.saltfish.tools.*" %>
-<%@page import="com.luna.saltfish.dbHandle.UserHandle" %>
+<%@page import="com.luna.saltfish.dbHandle.UserHandle,com.luna.saltfish.constant.*" %>
 <%@page import="org.w3c.dom.UserDataHandler" %>
 <%@page import="com.luna.saltfish.dbHandle.GoodsHandle" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

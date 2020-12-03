@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.tools.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
+        import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -13,7 +13,7 @@
     <div class="list-group">
         <%
             //判断pn参数
-            User user = (User) session.getAttribute("loginUser");
+            User user = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
             int pn = 1;
             int perPage = StaticVar.PERPAGE_COLLECT;//每页显示几条？
             int ceta = 0;

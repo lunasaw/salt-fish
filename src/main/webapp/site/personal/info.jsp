@@ -22,7 +22,7 @@
 <%
     UserHandle userHandle = new UserHandle();
     Boolean isLogined = LoginVerify.isLogin(request);
-    User me = (User) session.getAttribute("loginUser");
+    User me = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
     User user = null;
     if (request.getAttribute("isMe") != null) {
         user = me;

@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.tools.MD5;
@@ -37,7 +38,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
         Boolean isLogin = LoginVerify.isLogin(request);
         String info = "";
         if (isLogin) {
-            User user = (User) (request.getSession().getAttribute("loginUser"));
+            User user = (User)(request.getSession().getAttribute(UserLoginConstant.LOGIN_USER));
             String name = getNotNullParameter(request, "name");
             String phone = getNotNullParameter(request, "phone");
             String pwd1 = getNotNullParameter(request, "pwd1");

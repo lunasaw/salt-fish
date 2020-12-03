@@ -1,6 +1,7 @@
 package com.luna.saltfish.servlet;
 
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.MessHandle;
 import com.luna.saltfish.dbHandle.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
@@ -41,7 +42,7 @@ public class MessCheckServlet extends HttpServlet {
         MessHandle messHandle = new MessHandle();
         String toEmail = request.getParameter("InputEmailToSend").split(" ")[0];
         String toMess = request.getParameter("InputMess");
-        User fromUser = ((User) request.getSession().getAttribute("loginUser"));
+        User fromUser = ((User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER));
         ;
         User toUser = null;
         Mess mess = new Mess();

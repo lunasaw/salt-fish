@@ -1,6 +1,7 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.GoodsStatusConstant;
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.GoodsHandle;
 import com.luna.saltfish.dbHandle.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
@@ -35,7 +36,7 @@ public class ShoppingCartServlet extends HttpServlet {
         HttpServletResponse response) throws ServletException, IOException {
 
         if (LoginVerify.isLogin(request)) {
-            User user = (User)request.getSession().getAttribute("loginUser");
+            User user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int userId = user.getId();
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
             ShopCartHandle shopCartHandle = new ShopCartHandle();

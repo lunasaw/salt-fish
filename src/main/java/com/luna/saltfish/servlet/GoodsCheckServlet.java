@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.GoodsHandle;
 import com.luna.saltfish.vo.Goods;
 import com.luna.saltfish.vo.User;
@@ -76,7 +77,7 @@ public class GoodsCheckServlet extends HttpServlet {
                                 type = i + 1;
                             }
                         }
-                        User user = (User) request.getSession().getAttribute("loginUser");
+                        User user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
                         Goods good = new Goods();
                         good.setTypeId(type);
                         good.setNum(1);

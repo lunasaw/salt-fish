@@ -1,5 +1,7 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.GoodsStatusConstant;
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.CollectHandle;
 import com.luna.saltfish.dbHandle.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
@@ -45,7 +47,7 @@ public class CollectServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (LoginVerify.isLogin(request)) {
-            User user = (User)request.getSession().getAttribute("loginUser");
+            User user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int userId = user.getId();
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
             CollectHandle collectHandle = new CollectHandle();
@@ -59,7 +61,8 @@ public class CollectServlet extends HttpServlet {
                 goodsHandle.close();
             }
             try {
-                if (goods != null && goods.getStates() == 2 && collectHandle.doCreate(userId, goodsId)) {
+                if (goods != null && goods.getStates().equals(GoodsStatusConstant.UNSOLD)
+                    && collectHandle.doCreate(userId, goodsId)) {
                     response.getWriter().print("success");
                 } else {
                     response.getWriter().print("error");

@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.UserHandle;
 import com.luna.saltfish.tools.MD5;
 import com.luna.saltfish.vo.User;
@@ -43,8 +44,8 @@ public class LoginServlet extends HttpServlet {
                         response.addCookie(cookieE);
                     }
                     HttpSession session = request.getSession();
-                    session.setAttribute("loginUser", user);
-                    session.setAttribute("isLogined", true);
+                    session.setAttribute(UserLoginConstant.LOGIN_USER, user);
+                    session.setAttribute(UserLoginConstant.IS_LOGIN, true);
                     response.sendRedirect("index.jsp");
                 } else {
                     request.setAttribute("isLoginOk", "false");

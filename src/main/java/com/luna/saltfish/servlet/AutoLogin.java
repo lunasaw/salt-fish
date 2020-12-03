@@ -1,6 +1,7 @@
 package com.luna.saltfish.servlet;
 
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
@@ -51,8 +52,8 @@ public class AutoLogin implements Filter {
                         if (userHandle.findByEmail(emailCookie) != null) {
                             User user = userHandle.findByEmail(emailCookie);
                             if (user != null) {
-                                ses.setAttribute("loginUser", user);
-                                ses.setAttribute("isLogined", true);
+                                ses.setAttribute(UserLoginConstant.LOGIN_USER, user);
+                                ses.setAttribute(UserLoginConstant.IS_LOGIN, true);
                             } else {
                                 //未检测到cookie，不做任何事
                             }

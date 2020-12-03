@@ -3,7 +3,7 @@
 */%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"
-         import="javax.servlet.http.HttpSession,com.luna.saltfish.dbHandle.*,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*" %>
+         import="javax.servlet.http.HttpSession,com.luna.saltfish.constant.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -41,7 +41,7 @@
 
                 //email 是邮箱或用户名（如果存在）
                 if (isLogined) {
-                    user = (User) session.getAttribute("loginUser");
+                    user = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
                     //更新信息，seesion中的user信息可能滞后！
                     user = userHandle.findById(user.getId());
                     email = (user.getName() == null || user.getName().length() == 0) ? user.getEmail() : user.getName();

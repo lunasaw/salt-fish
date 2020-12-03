@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.OrderHandle;
 import com.luna.saltfish.dbHandle.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
@@ -35,7 +36,7 @@ public class BuyAllShopcartServlet extends HttpServlet {
         Boolean isLogined = LoginVerify.isLogin(request);
         User user = null;
         if (isLogined) {
-            user = (User) request.getSession().getAttribute("loginUser");
+            user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
         } else {
             request.getRequestDispatcher("user/login.jsp?login-info=" + java.net.URLEncoder.encode("你应该先登录", "UTF-8")).forward(request, response);
         }

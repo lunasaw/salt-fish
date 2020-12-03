@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.CollectHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
@@ -36,7 +37,7 @@ public class RemoveCollectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer goodsId = Integer.parseInt(request.getParameter("goodsid"));
         if (LoginVerify.isLogin(request)) {
-            User loginUser = (User) request.getSession().getAttribute("loginUser");
+            User loginUser = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int loginUserId = loginUser.getId();
             CollectHandle collectHandle = new CollectHandle();
             try {

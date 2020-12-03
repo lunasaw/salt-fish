@@ -7,16 +7,16 @@ import java.sql.DriverManager;
  * @author luna@mac
  */
 public class DatabaseConnection {
-    private static final String DBDRIVER = "com.mysql.jdbc.Driver";
-    private static final String DBURL = "jdbc:mysql://111.229.114.126:3307/salt-fish";
-    private static final String DBUSER = "root";
-    private static final String DBPASSWORD = "czy1024";
-    private Connection conn;
+    private static final String driver     = "com.mysql.jdbc.Driver";
+    private static final String dburl      = "jdbc:mysql://111.229.114.126:3307/salt-fish";
+    private static final String dbuser     = "root";
+    private static final String dbpassword = "czy1024";
+    private Connection          conn;
 
     public DatabaseConnection() throws Exception {
-        Class.forName(DBDRIVER);
-        this.conn = DriverManager.getConnection(DBURL, DBUSER, DBPASSWORD);
-        //this.conn.createStatement().execute("SET NAMES utf8");
+        Class.forName(driver);
+        this.conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
+        // this.conn.createStatement().execute("SET NAMES utf8");
     }
 
     public Connection getConnection() {

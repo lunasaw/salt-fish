@@ -1,5 +1,6 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dbHandle.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
@@ -38,7 +39,7 @@ public class UpdateUserImgServlet extends HttpServlet {
             return;
         }
 
-        User user = (User) (request.getSession().getAttribute("loginUser"));
+        User user = (User)(request.getSession().getAttribute(UserLoginConstant.LOGIN_USER));
         UserHandle userHandle = new UserHandle();
         //更新信息，seesion中的user信息可能滞后！
         try {
