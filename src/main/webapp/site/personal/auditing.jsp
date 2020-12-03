@@ -32,7 +32,7 @@ status说明：
                 //document.getElementById("auditing-button-"+goodsId).innerHTML="=操作中=";
             }
         }
-        xmlGoods.open("GET", "AuditingServlet?goodsId=" + goodsId + "&t=" + Math.random() + (type == "pass" ? "&hd=1" : "&hd=0"), true);
+        xmlGoods.open("GET", "AuditingServlet?goodsId=" + goodsId + "&t=" + Math.random() + (type == "pass" ? "&pass=1" : "&pass=0"), true);
         xmlGoods.send(null);
     }
 </script>

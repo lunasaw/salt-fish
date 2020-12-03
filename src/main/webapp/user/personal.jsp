@@ -39,7 +39,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <base href="<%=basePath%>">
     <jsp:include page="../site/head.jsp"/>
-    <title>用户中心 - HfuuShop</title>
+    <title>用户中心 - salt-fish</title>
 </head>
 <body>
     <jsp:include page="../site/header.jsp"/>

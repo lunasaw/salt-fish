@@ -61,7 +61,7 @@ public class CollectServlet extends HttpServlet {
                 goodsHandle.close();
             }
             try {
-                if (goods != null && goods.getStates().equals(GoodsStatusConstant.UNSOLD)
+                if (goods != null && goods.getStates().equals(GoodsStatusConstant.REVIEW_ED)
                     && collectHandle.doCreate(userId, goodsId)) {
                     response.getWriter().print("success");
                 } else {

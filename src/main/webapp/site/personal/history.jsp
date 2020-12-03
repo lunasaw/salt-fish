@@ -28,7 +28,9 @@
         <%
             if (list.size() != 0) {
                 for (Goods good : list) {
-                    if (good.getProducterId() == null) continue;
+                    if (good.getProducterId() == null) {
+                        continue;
+                    }
                     User user = userHandle.findById(good.getProducterId());
         %>
 

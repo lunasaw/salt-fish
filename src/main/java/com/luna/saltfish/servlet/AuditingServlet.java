@@ -1,6 +1,7 @@
 package com.luna.saltfish.servlet;
 
 
+import com.luna.saltfish.constant.GoodsStatusConstant;
 import com.luna.saltfish.dbHandle.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Goods;
@@ -32,17 +33,17 @@ public class AuditingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (LoginVerify.isAdmin(request)) {
-            int isPass = Integer.parseInt(request.getParameter("hd"));
+            int isPass = Integer.parseInt(request.getParameter("isPass"));
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
             boolean isSuc = false;
             GoodsHandle goodsHandle = new GoodsHandle();
             try {
                 Goods goods = goodsHandle.findById(goodsId);
                 if (isPass == 1) {
-                    goods.setStates(2);
+                    goods.setStates(GoodsStatusConstant.REVIEW_ED);
                     isSuc = true;
                 } else if (isPass == 0) {
-                    goods.setStates(3);
+                    goods.setStates(GoodsStatusConstant.REVIEW_FAIL);
                     isSuc = true;
                 } else {
                     response.getWriter().print("error");

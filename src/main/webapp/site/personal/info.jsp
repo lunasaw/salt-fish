@@ -102,14 +102,14 @@
             <div class="form-group" style="display:none" id="set-pwd-input">
 
                 <div class="input-group">
-                    <span class="input-group-addon" id="pwd1">新的密码</span>
-                    <input placeholder="不更新密码留空此项即可" name="pwd1" type="password" class="form-control" value="">
+                    <span class="input-group-addon" id="password">新的密码</span>
+                    <input placeholder="不更新密码留空此项即可" name="password" type="password" class="form-control" value="">
                 </div>
 
 
                 <div class="input-group">
-                    <span class="input-group-addon" id="pwd2">密码重复</span>
-                    <input type="password" name="pwd2" class="form-control" value="">
+                    <span class="input-group-addon" id="verify">密码重复</span>
+                    <input type="password" name="verify" class="form-control" value="">
                 </div>
 
             </div>

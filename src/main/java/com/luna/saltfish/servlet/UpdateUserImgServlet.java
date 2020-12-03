@@ -15,18 +15,12 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 
 /**
- * Servlet implementation class GoodsCheckServlet
- */
-
-/**
+ * @author luna@mac
  * 用户头像更新
- * //限制10MB大小
+ * 限制10MB大小
  */
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/UpdateUserImgServlet")
-/**
- * @author luna@mac
- */
 public class UpdateUserImgServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -64,7 +58,6 @@ public class UpdateUserImgServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-
             userHandle.close();
         }
     }

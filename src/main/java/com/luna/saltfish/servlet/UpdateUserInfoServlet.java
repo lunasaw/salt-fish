@@ -41,11 +41,11 @@ public class UpdateUserInfoServlet extends HttpServlet {
             User user = (User)(request.getSession().getAttribute(UserLoginConstant.LOGIN_USER));
             String name = getNotNullParameter(request, "name");
             String phone = getNotNullParameter(request, "phone");
-            String pwd1 = getNotNullParameter(request, "pwd1");
-            String pwd2 = getNotNullParameter(request, "pwd2");
-            if (pwd1.length() > 0) {
-                if (pwd1.equals(pwd2) && pwd1.matches("[A-Za-z0-9]{6,}")) {
-                    user.setPwd(MD5.getMD5(pwd1));
+            String password = getNotNullParameter(request, "password");
+            String verify = getNotNullParameter(request, "verify");
+            if (password.length() > 0) {
+                if (password.equals(verify) && password.matches("[A-Za-z0-9]{6,}")) {
+                    user.setPwd(MD5.getMD5(password));
                 } else {
                     info = "更新失败，两次密码不一致";
                     response.sendRedirect("user/personal.jsp?tab=info&info=" + java.net.URLEncoder.encode(info, "UTF-8"));

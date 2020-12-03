@@ -7,11 +7,19 @@ package com.luna.saltfish.constant;
  * @createTime 2020年12月03日 08:38:00
  */
 public interface GoodsStatusConstant {
+    /** 待审核 */
+    Integer PRE_VIEW    = 1;
 
-    /** 未出售 */
-    Integer UNSOLD = 2;
+    /** 审核通过 */
+    Integer REVIEW_ED   = 2;
 
-    /** 已出售 */
-    Integer SOLD   = 1;
+    /** 审核未通过 */
+    Integer REVIEW_FAIL = 3;
+
+    /** 已被购买(交易中) */
+    Integer TRADING     = 4;
+
+    /** 交易完成 */
+    Integer COMPLETION  = 5;
 
 }

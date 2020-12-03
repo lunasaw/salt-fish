@@ -50,7 +50,7 @@ public class ShoppingCartServlet extends HttpServlet {
                 goodsHandle.close();
             }
             try {
-                if (goods != null && goods.getStates().equals(GoodsStatusConstant.UNSOLD)
+                if (goods != null && goods.getStates().equals(GoodsStatusConstant.REVIEW_ED)
                     && shopCartHandle.doSaveShoppingCart(goodsId, userId)) {
                     response.getWriter().print("success");
                 } else {

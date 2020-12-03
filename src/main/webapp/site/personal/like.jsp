@@ -55,8 +55,8 @@
                 </div>
                 <div class="col-md-10">
                     <div class="row detail-goods lead">
-                                <span class="label label-<%=good.getStates()==2?"info":"danger" %>">
-                                <%=good.getStates() == 2 ? "出售中" : "已被购买" %>
+                                <span class="label label-<%=good.getStates().equals(GoodsStatusConstant.REVIEW_ED)?"info":"danger" %>">
+                                <%=good.getStates().equals(GoodsStatusConstant.REVIEW_ED) ? "出售中" : "已被购买" %>
                                 </span>
                         <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                         </a>
