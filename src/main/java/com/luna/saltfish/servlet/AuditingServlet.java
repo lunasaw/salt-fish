@@ -16,6 +16,9 @@ import java.io.IOException;
  * Servlet implementation class AuditingServlet
  */
 @WebServlet("/AuditingServlet")
+/**
+ * @author luna@mac
+ */
 public class AuditingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

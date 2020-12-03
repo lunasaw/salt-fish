@@ -2,6 +2,9 @@ package com.luna.saltfish.vo;
 
 import java.util.Date;
 
+/**
+ * @author luna@mac
+ */
 public class Goods {
 
     /** 物品id */

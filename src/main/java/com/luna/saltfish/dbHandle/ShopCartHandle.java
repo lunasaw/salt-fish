@@ -11,7 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author luna@mac
+ */
 public class ShopCartHandle {
+
     private Connection        conn  = null;
     private PreparedStatement pstmt = null;
 

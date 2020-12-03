@@ -15,6 +15,9 @@ import java.io.IOException;
  * Servlet implementation class RemoveCollectServlet
  */
 @WebServlet("/RemoveCollectServlet")
+/**
+ * @author luna@mac
+ */
 public class RemoveCollectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

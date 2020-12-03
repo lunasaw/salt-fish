@@ -20,6 +20,9 @@ import java.io.IOException;
  * @author luna
  */
 @WebServlet("/ShoppingCartServlet")
+/**
+ * @author luna@mac
+ */
 public class ShoppingCartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

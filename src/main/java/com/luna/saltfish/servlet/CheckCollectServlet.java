@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/CheckCollectServlet")
+/**
+ * @author luna@mac
+ */
 public class CheckCollectServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

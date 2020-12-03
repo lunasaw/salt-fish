@@ -3,6 +3,9 @@ package com.luna.saltfish.dbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * @author luna@mac
+ */
 public class DatabaseConnection {
     private static final String DBDRIVER = "com.mysql.jdbc.Driver";
     private static final String DBURL = "jdbc:mysql://111.229.114.126:3307/salt-fish";

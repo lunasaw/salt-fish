@@ -2,6 +2,9 @@ package com.luna.saltfish.vo;
 
 import java.util.Date;
 
+/**
+ * @author luna@mac
+ */
 public class Order {
     /** 记录id */
     private int id;

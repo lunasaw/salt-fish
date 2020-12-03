@@ -2,6 +2,9 @@ package com.luna.saltfish.vo;
 
 import java.util.Date;
 
+/**
+ * @author luna@mac
+ */
 public class Mess {
     /** 消息发布者id */
     private int messFromId;

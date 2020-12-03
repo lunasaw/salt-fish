@@ -17,6 +17,9 @@ import java.io.IOException;
  * Servlet implementation class collectServlet
  */
 @WebServlet("/CollectServlet")
+/**
+ * @author luna@mac
+ */
 public class CollectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -5,6 +5,9 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 @WebFilter("/CharSet")
+/**
+ * @author luna@mac
+ */
 public class CharSet implements Filter {
     public CharSet() {
     }

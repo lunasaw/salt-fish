@@ -12,6 +12,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author luna@mac
+ */
 public class MessHandle {
     private Connection conn = null;
     private PreparedStatement pstmt = null;

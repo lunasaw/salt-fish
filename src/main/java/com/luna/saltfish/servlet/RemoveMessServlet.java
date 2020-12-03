@@ -13,6 +13,9 @@ import java.io.IOException;
 
 //删除一条消息
 @WebServlet("/RemoveMessServlet")
+/**
+ * @author luna@mac
+ */
 public class RemoveMessServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -20,6 +20,9 @@ import java.io.IOException;
 //限制10MB大小
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/UpdateUserImgServlet")
+/**
+ * @author luna@mac
+ */
 public class UpdateUserImgServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

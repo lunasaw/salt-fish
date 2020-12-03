@@ -16,6 +16,9 @@ import java.io.IOException;
  * Servlet implementation class UpdateUserInfoServlet
  */
 @WebServlet("/UpdateUserInfoServlet")
+/**
+ * @author luna@mac
+ */
 public class UpdateUserInfoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

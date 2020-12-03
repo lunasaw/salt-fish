@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.Date;
 
 @WebServlet("/OrderCheckServlet")
+/**
+ * @author luna@mac
+ */
 public class OrderCheckServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

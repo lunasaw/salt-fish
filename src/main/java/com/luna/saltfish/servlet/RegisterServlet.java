@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //注册验证
+/**
+ * @author luna@mac
+ */
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -5,6 +5,9 @@ import com.luna.saltfish.vo.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author luna@mac
+ */
 public class LoginVerify {
     //登录验证
     //判断是否为管理员登录

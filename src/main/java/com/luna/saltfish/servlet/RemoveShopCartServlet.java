@@ -15,6 +15,9 @@ import java.io.IOException;
  * 从购物车移除一个物品
  */
 @WebServlet("/RemoveShopCartServlet")
+/**
+ * @author luna@mac
+ */
 public class RemoveShopCartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

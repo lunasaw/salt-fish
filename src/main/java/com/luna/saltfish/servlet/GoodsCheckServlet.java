@@ -20,6 +20,9 @@ import java.util.Date;
  */
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/GoodsCheckServlet")
+/**
+ * @author luna@mac
+ */
 public class GoodsCheckServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

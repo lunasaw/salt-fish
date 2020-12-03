@@ -16,6 +16,9 @@ import java.io.IOException;
  * Servlet Filter implementation class AutoLogin
  */
 @WebFilter("/AutoLogin")
+/**
+ * @author luna@mac
+ */
 public class AutoLogin implements Filter {
     public AutoLogin() {
     }

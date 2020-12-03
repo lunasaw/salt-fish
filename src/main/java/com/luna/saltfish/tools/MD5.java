@@ -1,5 +1,8 @@
 package com.luna.saltfish.tools;
 
+/**
+ * @author luna@mac
+ */
 public class MD5 {
     public static String getMD5(String password) {
         byte[] source = password.getBytes();

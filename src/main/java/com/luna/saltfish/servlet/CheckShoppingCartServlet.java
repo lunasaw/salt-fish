@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/CheckShoppingServlet")
+/**
+ * @author luna@mac
+ */
 public class CheckShoppingCartServlet extends HttpServlet {
 
     @Override

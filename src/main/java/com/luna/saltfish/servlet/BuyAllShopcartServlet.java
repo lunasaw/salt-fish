@@ -19,6 +19,9 @@ import java.util.Date;
 import java.util.List;
 
 @WebServlet("/BuyAllShopcartServlet")
+/**
+ * @author luna@mac
+ */
 public class BuyAllShopcartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,8 @@
 package com.luna.saltfish.vo;
 
+/**
+ * @author luna@mac
+ */
 public class User {
     /** 用户id */
     private int id;

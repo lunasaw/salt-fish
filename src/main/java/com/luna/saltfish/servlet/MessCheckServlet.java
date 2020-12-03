@@ -19,6 +19,9 @@ import java.util.Date;
  * Servlet implementation class MessCheckServlet
  */
 @WebServlet("/MessCheckServlet")
+/**
+ * @author luna@mac
+ */
 public class MessCheckServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
