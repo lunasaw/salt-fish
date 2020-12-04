@@ -1,35 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>salt-fish</display-name>
-  <filter>
-    <filter-name>login</filter-name>
-    <filter-class>com.luna.saltfish.servlet.AutoLogin</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>login</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-  <filter>
-    <filter-name>charset</filter-name>
-    <filter-class>com.luna.saltfish.servlet.CharSet</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>charset</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-  <servlet>
-    <servlet-name>register</servlet-name>
-    <servlet-class>com.luna.saltfish.servlet.RegisterServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>register</servlet-name>
-    <url-pattern>/user/register</url-pattern>
-  </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/error_404.jsp</location>
-  </error-page>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+    <display-name>salt-fish</display-name>
+    <filter>
+        <filter-name>login</filter-name>
+        <filter-class>com.luna.saltfish.servlet.AutoLogin</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>login</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>charset</filter-name>
+        <filter-class>com.luna.saltfish.servlet.CharSet</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>charset</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--    注册-->
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/user/register</url-pattern>
+    </servlet-mapping>
+
+    <!--    登陆-->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <!--  退出-->
+    <servlet>
+        <servlet-name>ExitLoginServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.ExitLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExitLoginServlet</servlet-name>
+        <url-pattern>/ExitLoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  上传头像-->
+    <servlet>
+        <servlet-name>UpdateUserImgServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.UpdateUserImgServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserImgServlet</servlet-name>
+        <url-pattern>/UpdateUserImgServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  更新个人信息-->
+    <servlet>
+        <servlet-name>UpdateUserInfoServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.UpdateUserInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserInfoServlet</servlet-name>
+        <url-pattern>/UpdateUserInfoServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--管理后台-审核物品-->
+    <servlet>
+        <servlet-name>AuditingServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.AuditingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuditingServlet</servlet-name>
+        <url-pattern>/AuditingServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  物品检查合法性-->
+    <servlet>
+        <servlet-name>GoodsCheckServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.GoodsCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoodsCheckServlet</servlet-name>
+        <url-pattern>/GoodsCheckServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  检查物品是否已经添加收藏夹-->
+    <servlet>
+        <servlet-name>CheckCollectServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.CheckCollectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckCollectServlet</servlet-name>
+        <url-pattern>/CheckCollectServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  添加一个物品到收藏夹-->
+    <servlet>
+        <servlet-name>CollectServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.CollectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CollectServlet</servlet-name>
+        <url-pattern>/CollectServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  检查物品是否已经添加到购物车-->
+    <servlet>
+        <servlet-name>CheckShoppingServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.CheckShoppingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckShoppingServlet</servlet-name>
+        <url-pattern>/CheckShoppingServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  添加一个物品到购物车-->
+    <servlet>
+        <servlet-name>ShoppingCartServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.ShoppingCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShoppingCartServlet</servlet-name>
+        <url-pattern>/ShoppingCartServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  删除购物车物品-->
+    <servlet>
+        <servlet-name>RemoveShopCartServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.RemoveShopCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveShopCartServlet</servlet-name>
+        <url-pattern>/RemoveShopCartServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <!--  消息检查-->
+    <servlet>
+        <servlet-name>MessCheckServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.MessCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessCheckServlet</servlet-name>
+        <url-pattern>/MessCheckServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  删除消息-->
+    <servlet>
+        <servlet-name>RemoveMessServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.RemoveMessServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveMessServlet</servlet-name>
+        <url-pattern>/RemoveMessServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  从收藏夹移除一个物品-->
+    <servlet>
+        <servlet-name>RemoveCollectServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.RemoveCollectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCollectServlet</servlet-name>
+        <url-pattern>/RemoveCollectServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  订单验证-购买 -->
+    <servlet>
+        <servlet-name>OrderCheckServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.OrderCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderCheckServlet</servlet-name>
+        <url-pattern>/OrderCheckServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  订单验证-清空购物车 -->
+    <servlet>
+        <servlet-name>BuyAllShopcartServlet</servlet-name>
+        <servlet-class>com.luna.saltfish.servlet.BuyAllShopcartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuyAllShopcartServlet</servlet-name>
+        <url-pattern>/BuyAllShopcartServlet</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error_404.jsp</location>
+    </error-page>
 </web-app>

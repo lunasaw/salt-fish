@@ -54,7 +54,7 @@
                 // 已经收藏readyState=4
                 if ((collectRequest.readyState == 4) && (collectRequest.status == 200)) {
                     if (collectRequest.responseText == "success") {
-                        document.getElementById("collectButton").innerHTML = "==已收藏==";
+                        document.getElementById("collectButton").innerHTML = "已收藏";
                     }
                 }
             }
@@ -84,7 +84,7 @@
                             document.getElementById("goodsNum").innerHTML = (parseInt(document.getElementById("goodsNum").innerHTML) + 1).toString();
                             document.getElementById("addCastButton").innerHTML = "已加入购物车";
                         } else {
-                            document.getElementById("addCastButton").innerHTML = "错误，你可能重复添加了！";
+                            document.getElementById("addCastButton").innerHTML = "Sorry,你可能重复添加了！";
                         }
                     }
                 }

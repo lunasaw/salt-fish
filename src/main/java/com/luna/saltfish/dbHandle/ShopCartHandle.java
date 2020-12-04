@@ -55,15 +55,17 @@ public class ShopCartHandle {
      * @throws Exception
      */
     public boolean checkShoppingCart(int userId, int goodsId) throws Exception {
-        ResultSet rs = null;
         try {
-            String sql = "select count(*) from shoppingcart where user_id= " + userId + " and goods_id= " + goodsId;
+            String sql =
+                "select count(shop_id) from shoppingcart where user_id= " + userId + " and goods_id= " + goodsId;
             this.pstmt = this.conn.prepareStatement(sql);
-            rs = this.pstmt.executeQuery();
+            ResultSet rs = this.pstmt.executeQuery();
             rs.next();
-            return rs.getInt(1) > 0;
+            int anInt = rs.getInt(1);
+            System.out.println(anInt);
+            return anInt > 1;
         } finally {
-            rs.close();
+            this.pstmt.close();
         }
 
     }
@@ -77,7 +79,8 @@ public class ShopCartHandle {
      * @throws Exception
      */
     public boolean doSaveShoppingCart(int goodsId, int userId) throws Exception {
-        if (!checkShoppingCart(goodsId, userId)) {
+        System.out.println(checkShoppingCart(userId, goodsId));
+        if (!checkShoppingCart(userId, goodsId)) {
             try {
                 String sql = "INSERT INTO shoppingcart (goods_id, user_id) VALUES (?, ?)";
                 this.pstmt = this.conn.prepareStatement(sql);
@@ -88,7 +91,7 @@ public class ShopCartHandle {
                 this.pstmt.close();
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -138,12 +141,15 @@ public class ShopCartHandle {
      * @throws Exception
      */
     public boolean removeList(int goodId, int userId) throws Exception {
-        String sql = "Delete from shoppingcart where goods_id=? and user_id=?";
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, goodId);
-        pstmt.setInt(2, userId);
-        this.pstmt.close();
-        return this.pstmt.executeUpdate() > 0;
+        try {
+            String sql = "Delete from shoppingcart where goods_id=? and user_id=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, goodId);
+            pstmt.setInt(2, userId);
+            return this.pstmt.executeUpdate() > 0;
+        } finally {
+            this.pstmt.close();
+        }
     }
 
     /**
@@ -154,11 +160,14 @@ public class ShopCartHandle {
      * @throws Exception
      */
     public boolean removeAllByUser(User user) throws Exception {
-        String sql = "Delete from shoppingcart where and userId=?";
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, user.getId());
-        this.pstmt.close();
-        return this.pstmt.executeUpdate() > 0;
+        try {
+            String sql = "Delete from shoppingcart where and userId=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, user.getId());
+            return this.pstmt.executeUpdate() > 0;
+        } finally {
+            this.pstmt.close();
+        }
     }
 
     public void close() {

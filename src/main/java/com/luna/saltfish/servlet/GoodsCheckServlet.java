@@ -59,14 +59,15 @@ public class GoodsCheckServlet extends HttpServlet {
         String goodsName = getForm(request, "name-goods");
         String goodsContent = getForm(request, "content-goods");
 
-        String goodsQuantitystr = getForm(request, "quantity-goods");// 先判断再转换成int防止直接抛出异常
+        String goodsQuantitystr = getForm(request, "quantity-goods");
+        // 先判断再转换成int防止直接抛出异常
         Float goodsQuantity = null;
 
-        // ;
         // 处理文件
         Part part = request.getPart("file");
         String type_id = getForm(request, "type_id-goods");
-        String[] typeId = {"book", "live", "clothes", "eletronic", "sport", "other"};//id对应123456
+        String[] typeId = {"book", "live", "clothes", "eletronic", "sport", "other"};
+        // id对应123456
         if (goodsName != null && (!goodsName.equals(""))) {
             if ((goodsQuantitystr != null && !goodsQuantitystr.equals(""))) {
                 if (goodsContent != null && (!goodsContent.equals(""))) {
