@@ -62,7 +62,6 @@ public class ShopCartHandle {
             ResultSet rs = this.pstmt.executeQuery();
             rs.next();
             int anInt = rs.getInt(1);
-            System.out.println(anInt);
             return anInt > 1;
         } finally {
             this.pstmt.close();
@@ -79,7 +78,6 @@ public class ShopCartHandle {
      * @throws Exception
      */
     public boolean doSaveShoppingCart(int goodsId, int userId) throws Exception {
-        System.out.println(checkShoppingCart(userId, goodsId));
         if (!checkShoppingCart(userId, goodsId)) {
             try {
                 String sql = "INSERT INTO shoppingcart (goods_id, user_id) VALUES (?, ?)";
