@@ -49,14 +49,12 @@ public class AutoLogin implements Filter {
                     try {
                         User user = userHandle.findByEmail(emailCookie);
                         if (user != null) {
-                            if (user != null) {
-                                if (MD5.getMD5(emailCookie).equals(sessionHandle.getSession(user.getId()))) {
-                                    ses.setAttribute(UserLoginConstant.LOGIN_USER, user);
-                                    ses.setAttribute(UserLoginConstant.IS_LOGIN, true);
-                                }
-                            } else {
-                                // 未检测到cookie，不做任何事
+                            if (MD5.getMD5(emailCookie).equals(sessionHandle.getSession(user.getId()))) {
+                                ses.setAttribute(UserLoginConstant.LOGIN_USER, user);
+                                ses.setAttribute(UserLoginConstant.IS_LOGIN, true);
                             }
+                        } else {
+                            // 未检测到cookie，不做任何事
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

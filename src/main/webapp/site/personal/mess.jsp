@@ -73,7 +73,7 @@
         %>
 
         <!-- 一条消息 -->
-        <%user = userHandle.findById(mess.getMessFromId()); %>
+        <% user = userHandle.findById(mess.getMessFromId());%>
         <div onMouseLeave="hide(this,'cz-bt-<%=mess.getMessId() %>','is-bt-<%=mess.getMessId() %>');"
              onMouseOver="show(this,'cz-bt-<%=mess.getMessId() %>');" id="mess-<%=mess.getMessId() %>" class="media">
             <div class="media-left">
