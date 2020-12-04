@@ -1,9 +1,10 @@
 package com.luna.saltfish.servlet;
 
-
 import com.luna.saltfish.constant.UserLoginConstant;
+import com.luna.saltfish.dbHandle.SessionHandle;
 import com.luna.saltfish.dbHandle.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
+import com.luna.saltfish.tools.MD5;
 import com.luna.saltfish.vo.User;
 
 import javax.servlet.*;
@@ -21,16 +22,15 @@ import java.io.IOException;
  * @author luna@mac
  */
 public class AutoLogin implements Filter {
-    public AutoLogin() {
-    }
+    public AutoLogin() {}
 
     @Override
-    public void destroy() {
-    }
+    public void destroy() {}
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+        throws IOException, ServletException {
+        HttpServletRequest req = (HttpServletRequest)request;
         HttpSession ses = req.getSession();
 
         if (LoginVerify.isLogin(req)) {
@@ -40,22 +40,22 @@ public class AutoLogin implements Filter {
 
         Cookie[] cookies = req.getCookies();
         UserHandle userHandle = new UserHandle();
+        SessionHandle sessionHandle = new SessionHandle();
         String emailCookie = null;
-        /*
-         * **重要**：//日后修复标记：这里仅用了email作为cookie并用于验证，极不安全
-         */
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if ("LOGIN_EMAIL".equals(cookie.getName())) {
                     emailCookie = cookie.getValue();
                     try {
-                        if (userHandle.findByEmail(emailCookie) != null) {
-                            User user = userHandle.findByEmail(emailCookie);
+                        User user = userHandle.findByEmail(emailCookie);
+                        if (user != null) {
                             if (user != null) {
-                                ses.setAttribute(UserLoginConstant.LOGIN_USER, user);
-                                ses.setAttribute(UserLoginConstant.IS_LOGIN, true);
+                                if (MD5.getMD5(emailCookie).equals(sessionHandle.getSession(user.getId()))) {
+                                    ses.setAttribute(UserLoginConstant.LOGIN_USER, user);
+                                    ses.setAttribute(UserLoginConstant.IS_LOGIN, true);
+                                }
                             } else {
-                                //未检测到cookie，不做任何事
+                                // 未检测到cookie，不做任何事
                             }
                         }
                     } catch (Exception e) {
@@ -69,6 +69,5 @@ public class AutoLogin implements Filter {
     }
 
     @Override
-    public void init(FilterConfig fConfig) throws ServletException {
-    }
+    public void init(FilterConfig fConfig) throws ServletException {}
 }

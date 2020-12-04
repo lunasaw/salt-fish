@@ -63,7 +63,7 @@ public class UserHandle {
 
     public List<User> findAll(String keyWord) throws Exception {
         List<User> all = new ArrayList<User>();
-        String sql = "SELECT id,email,pwd,name,stu_num FROM user WHERE name LIKE ? OR email LIKE ?";
+        String sql = "SELECT id, email, pwd, name, stu_num FROM user WHERE name LIKE ? OR email LIKE ?";
         this.pstmt = this.conn.prepareStatement(sql);
         this.pstmt.setString(1, "%" + keyWord + "%");
         this.pstmt.setString(2, "%" + keyWord + "%");
