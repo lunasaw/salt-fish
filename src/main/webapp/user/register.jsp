@@ -13,7 +13,6 @@
     <title>注册-盐鱼物品交易</title>
     <link href="src/index.css" rel="stylesheet">
     <link href="src/css/sign.css" rel="stylesheet">
-
 </head>
 
 <body>

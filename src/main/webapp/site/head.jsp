@@ -12,3 +12,4 @@
 <link href="<%=basePath%>src/css/main.css" rel="stylesheet">
 <script src="<%=basePath%>src/jquery2/jquery.min.js"></script>
 <script src="<%=basePath%>src/bootstrap3/js/bootstrap.min.js"></script>
+<link rel="icon" href="static/luna-logo.png" type="image/x-icon"/>

@@ -13,7 +13,6 @@
     <base href=" <%=basePath%>">
     <title>登录-盐鱼物品交易</title>
     <link href="src/css/sign.css" rel="stylesheet">
-
 </head>
 <body>
     <jsp:include page="../site/header.jsp" flush="true"/>

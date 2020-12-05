@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>消息发送-salt-fish</title>
     <style>
         div.arrow-left {
             width: 0px;
@@ -20,6 +20,7 @@
             line-height: 0px;
         }
     </style>
+    <link rel="icon" href="static/luna-logo.png" type="image/x-icon"/>
 </head>
 <body>
 

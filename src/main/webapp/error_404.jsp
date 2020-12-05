@@ -9,6 +9,7 @@
 <head>
     <base href=" <%=basePath%>">
     <title>404</title>
+    <link rel="icon" href="static/luna-logo.png" type="image/x-icon"/>
 </head>
 <body>
     <h3>盐鱼物品交易网站</h3>
