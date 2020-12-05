@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
     private static final String DRIVER     = "com.mysql.cj.jdbc.Driver";
     private static final String DBURL      =
-        "jdbc:mysql://f.xicc.cc:23315/salt-fish?serverTimezone=GMT%2B8&useSSL=false";
+        "jdbc:mysql://localhost:3306/salt-fish?serverTimezone=GMT%2B8&useSSL=false";
     private static final String DBUSER     = "root";
     private static final String DBPASSWORD = "czy1024";
     private Connection          conn;
