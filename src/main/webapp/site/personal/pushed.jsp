@@ -18,7 +18,7 @@
     GoodsHandle goodsHandle = new GoodsHandle();
     Boolean isLogined = LoginVerify.isLogin(request);
     User me = (User) session.getAttribute(UserLoginConstant.LOGIN_USER);
-    User user = null;
+    User user;
     if (request.getAttribute("isMe") != null) {
         user = me;
     } else {

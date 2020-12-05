@@ -5,7 +5,6 @@
 <%
     UserHandle userHandle = new UserHandle();
     MessHandle messHandle = new MessHandle();
-    User user = null;
     if (!LoginVerify.isLogin(request)) {
         request.getRequestDispatcher("../../user/login.jsp?login-info=" + java.net.URLEncoder.encode("你应该先登录，之后从个人中心进入消息页", "UTF-8")).forward(request, response);
         return;
@@ -14,7 +13,7 @@
 
     int pn = 1;
     String tmpString = request.getParameter("pn");
-//获取pn参数
+    //获取pn参数
     if (tmpString != null && tmpString.length() != 0) {
         if (Integer.parseInt(tmpString) > 0) {
             pn = Integer.parseInt(tmpString);
@@ -73,7 +72,7 @@
         %>
 
         <!-- 一条消息 -->
-        <% user = userHandle.findById(mess.getMessFromId());%>
+        <% User user = userHandle.findById(mess.getMessFromId());%>
         <div onMouseLeave="hide(this,'cz-bt-<%=mess.getMessId() %>','is-bt-<%=mess.getMessId() %>');"
              onMouseOver="show(this,'cz-bt-<%=mess.getMessId() %>');" id="mess-<%=mess.getMessId() %>" class="media">
             <div class="media-left">

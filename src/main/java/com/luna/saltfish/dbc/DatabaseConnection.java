@@ -7,16 +7,16 @@ import java.sql.DriverManager;
  * @author luna@mac
  */
 public class DatabaseConnection {
-    private static final String driver     = "com.mysql.cj.jdbc.Driver";
-    private static final String dburl      =
-        "jdbc:mysql://111.229.114.126:3307/salt-fish?serverTimezone=GMT%2B8&useSSL=false";
-    private static final String dbuser     = "root";
-    private static final String dbpassword = "czy1024";
+    private static final String DRIVER     = "com.mysql.cj.jdbc.Driver";
+    private static final String DBURL      =
+        "jdbc:mysql://f.xicc.cc:23315/salt-fish?serverTimezone=GMT%2B8&useSSL=false";
+    private static final String DBUSER     = "root";
+    private static final String DBPASSWORD = "czy1024";
     private Connection          conn;
 
     public DatabaseConnection() throws Exception {
-        Class.forName(driver);
-        this.conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
+        Class.forName(DRIVER);
+        this.conn = DriverManager.getConnection(DBURL, DBUSER, DBPASSWORD);
         // this.conn.createStatement().execute("SET NAMES utf8");
     }
 
@@ -24,12 +24,12 @@ public class DatabaseConnection {
         return this.conn;
     }
 
-    public void close() throws Exception {
+    public void close() {
         if (this.conn != null) {
             try {
                 this.conn.close();
             } catch (Exception e) {
-                throw e;
+                e.printStackTrace();
             }
         }
     }

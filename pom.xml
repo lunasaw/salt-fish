@@ -7,7 +7,7 @@
     <groupId>com.luna</groupId>
     <artifactId>salt-fish</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Salt-fish Maven Webapp</name>
     <url>http://www.luna.com</url>

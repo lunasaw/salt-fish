@@ -29,16 +29,18 @@ public class UpdateUserImgServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
         // 处理文件
         if (!LoginVerify.isLogin(request)) {
-            request.getRequestDispatcher("user/login.jsp?login-info=" + java.net.URLEncoder.encode("你还没有登录！", "UTF-8")).forward(request, response);
+            request.getRequestDispatcher("user/login.jsp?login-info=" + java.net.URLEncoder.encode("你还没有登录！", "UTF-8"))
+                .forward(request, response);
             return;
         }
 
         User user = (User)(request.getSession().getAttribute(UserLoginConstant.LOGIN_USER));
         UserHandle userHandle = new UserHandle();
-        //更新信息，seesion中的user信息可能滞后！
+        // 更新信息，seesion中的user信息可能滞后！
         try {
             user = userHandle.findById(user.getId());
         } catch (Exception e1) {
@@ -50,11 +52,12 @@ public class UpdateUserImgServlet extends HttpServlet {
             return;
         }
         String savePath = request.getServletContext().getRealPath("static/user_img");
-        part.write(savePath + "/" + user.getId());
-        user.setImg("static/user_img/" + user.getId());
+        part.write(savePath + "/" + user.getId() + ".jpg");
+        user.setImg("static/user_img/" + user.getId() + ".jpg");
         try {
             userHandle.doUpdate(user);
-            response.sendRedirect("user/personal.jsp?tab=info&info=" + java.net.URLEncoder.encode("头像更新成功", "UTF-8") + "&cache=" + 0);
+            response.sendRedirect(
+                "user/personal.jsp?tab=info&info=" + java.net.URLEncoder.encode("头像更新成功", "UTF-8") + "&cache=" + 0);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

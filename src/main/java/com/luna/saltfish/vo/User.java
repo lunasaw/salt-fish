@@ -24,7 +24,7 @@ public class User {
     public String getImg() {
         String userImg = img;
         if (userImg == null || userImg.length() == 0) {
-            return "static/user_img/0";
+            return "static/user_img/0.jpg";
         } else {
             return userImg;
         }
