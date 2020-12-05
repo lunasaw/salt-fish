@@ -72,7 +72,8 @@
         %>
 
         <!-- 一条消息 -->
-        <% User user = userHandle.findById(mess.getMessFromId());%>
+        <% User user = userHandle.findById(mess.getMessFromId());
+        %>
         <div onMouseLeave="hide(this,'cz-bt-<%=mess.getMessId() %>','is-bt-<%=mess.getMessId() %>');"
              onMouseOver="show(this,'cz-bt-<%=mess.getMessId() %>');" id="mess-<%=mess.getMessId() %>" class="media">
             <div class="media-left">
@@ -86,7 +87,7 @@
     <span class="media-heading">
     
     <%
-        if (user.getId() == 1) {
+        if (mess.getMessText().contains("==============")) {
             out.print("<span class=\"label label-danger\">SYS</span>");
         } else {
             out.print("<span class=\"label label-primary\">user</span>");
@@ -126,11 +127,7 @@
                 </div>
 
                 <pre><%
-                    if (user.getId() == 1) {
-                        out.print(mess.getMessText());
-                    } else {
-                        out.print(mess.getMessText().replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
-                    }
+                    out.print(mess.getMessText());
                 %></pre>
             </div>
         </div>

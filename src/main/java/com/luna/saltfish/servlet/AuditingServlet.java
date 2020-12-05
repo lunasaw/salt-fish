@@ -33,7 +33,7 @@ public class AuditingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (LoginVerify.isAdmin(request)) {
-            int isPass = Integer.parseInt(request.getParameter("isPass"));
+            int isPass = Integer.parseInt(request.getParameter("pass"));
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
             boolean isSuc = false;
             GoodsHandle goodsHandle = new GoodsHandle();
