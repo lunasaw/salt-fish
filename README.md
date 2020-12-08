@@ -28,7 +28,7 @@ salt-fish
     <a href="https://czy1024.github.io/salt-fish"><strong>探索本项目的文档 »</strong></a>
     <br />
     <br />
-    <a href="http://lunac.vaiwan.com/salt-fish/">查看Demo</a>
+    <a href="http://lunac.vaiwan.com/salt-fish/">演示地址</a>
     ·
     <a href="">报告Bug</a>
     ·
