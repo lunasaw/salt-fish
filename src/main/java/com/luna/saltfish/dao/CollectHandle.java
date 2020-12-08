@@ -2,8 +2,8 @@ package com.luna.saltfish.dao;
 
 import com.luna.saltfish.tools.IntHolder;
 import com.luna.saltfish.tools.JdbcTemplate;
-import com.luna.saltfish.vo.Goods;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.Goods;
+import com.luna.saltfish.entity.User;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;

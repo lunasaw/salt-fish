@@ -1,8 +1,8 @@
 package com.luna.saltfish.dao;
 
 import com.luna.saltfish.tools.JdbcTemplate;
-import com.luna.saltfish.vo.Goods;
-import com.luna.saltfish.vo.Order;
+import com.luna.saltfish.entity.Goods;
+import com.luna.saltfish.entity.Order;
 import java.util.List;
 
 /**

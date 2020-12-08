@@ -3,7 +3,7 @@ package com.luna.saltfish.servlet;
 import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -60,8 +60,6 @@ public class UpdateUserImgServlet extends HttpServlet {
                 "user/personal.jsp?tab=info&info=" + java.net.URLEncoder.encode("头像更新成功", "UTF-8") + "&cache=" + 0);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-
         }
     }
 

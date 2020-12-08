@@ -33,13 +33,13 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dao.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
-<%@ page import="com.luna.saltfish.vo.User" %>
+        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dao.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.entity.*" %>
+<%@ page import="com.luna.saltfish.entity.User" %>
 <%@ page import="com.luna.saltfish.dao.UserHandle" %>
 <%@ page import="com.luna.saltfish.dao.MessHandle" %>
 <%@ page import="com.luna.saltfish.tools.LoginVerify" %>
 <%@ page import="com.luna.saltfish.tools.StaticVar" %>
-<%@ page import="com.luna.saltfish.vo.Mess" %>
+<%@ page import="com.luna.saltfish.entity.Mess" %>
 
 <div class="panel panel-info">
     <div class="panel-heading">

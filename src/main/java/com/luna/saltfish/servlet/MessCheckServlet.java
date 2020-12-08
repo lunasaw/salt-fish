@@ -5,8 +5,8 @@ import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.MessHandle;
 import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.Mess;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.Mess;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,8 +67,6 @@ public class MessCheckServlet extends HttpServlet {
                     + "&info=" + java.net.URLEncoder.encode("消息已发送", "UTF-8"));
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-
             }
         } else {
             response.sendRedirect("user/personal.jsp?tab=mess&userId=" + fromUser.getId() + "&handle=write" + "&info="

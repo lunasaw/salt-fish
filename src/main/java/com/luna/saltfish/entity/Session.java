@@ -1,4 +1,4 @@
-package com.luna.saltfish.vo;
+package com.luna.saltfish.entity;
 
 /**
  * @author luna@mac

@@ -1,11 +1,12 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.CoookieNameConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.SessionHandle;
 import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.tools.MD5;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -41,11 +42,10 @@ public class AutoLogin implements Filter {
         Cookie[] cookies = req.getCookies();
         UserHandle userHandle = new UserHandle();
         SessionHandle sessionHandle = new SessionHandle();
-        String emailCookie = null;
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if ("LOGIN_EMAIL".equals(cookie.getName())) {
-                    emailCookie = cookie.getValue();
+                if (CoookieNameConstant.LOGIN_EMAIL.equals(cookie.getName())) {
+                    String emailCookie = cookie.getValue();
                     try {
                         User user = userHandle.findByEmail(emailCookie);
                         if (user != null) {

@@ -2,11 +2,11 @@
 购买历史页，被/personal.jsp包含，查找所有自己已购买商品
 */%>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
+        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.entity.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="com.luna.saltfish.dao.*,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
+        import="com.luna.saltfish.dao.*,com.luna.saltfish.constant.*,com.luna.saltfish.entity.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";

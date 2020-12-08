@@ -3,7 +3,7 @@ package com.luna.saltfish.dao;
 import com.luna.saltfish.constant.GoodsStatusConstant;
 import com.luna.saltfish.tools.IntHolder;
 import com.luna.saltfish.tools.JdbcTemplate;
-import com.luna.saltfish.vo.Goods;
+import com.luna.saltfish.entity.Goods;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;

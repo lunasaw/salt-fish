@@ -2,7 +2,7 @@ package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.MD5;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -82,8 +82,6 @@ public class RegisterServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-
         }
     }
 

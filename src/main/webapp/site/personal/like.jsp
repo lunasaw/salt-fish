@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,com.luna.saltfish.dao.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
+        import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,com.luna.saltfish.dao.*,com.luna.saltfish.entity.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";

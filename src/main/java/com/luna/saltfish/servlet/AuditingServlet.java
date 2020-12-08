@@ -1,11 +1,12 @@
 package com.luna.saltfish.servlet;
 
 
+import com.luna.saltfish.constant.GoodsPassConstant;
 import com.luna.saltfish.constant.GoodsStatusConstant;
 import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.dao.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.Goods;
+import com.luna.saltfish.entity.Goods;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,10 +41,10 @@ public class AuditingServlet extends HttpServlet {
             GoodsHandle goodsHandle = new GoodsHandle();
             try {
                 Goods goods = goodsHandle.findById(goodsId);
-                if (isPass == 1) {
+                if (isPass == GoodsPassConstant.IS_PASS) {
                     goods.setStatus(GoodsStatusConstant.REVIEW_ED);
                     isSuc = true;
-                } else if (isPass == 0) {
+                } else if (isPass == GoodsPassConstant.NO_PASS) {
                     goods.setStatus(GoodsStatusConstant.REVIEW_FAIL);
                     isSuc = true;
                 } else {

@@ -5,9 +5,9 @@
          pageEncoding="UTF-8" %>
 <%@ page language="java" %>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,java.lang.Math,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
-<%@ page import="com.luna.saltfish.vo.Goods" %>
-<%@ page import="com.luna.saltfish.vo.User" %>
+        import="java.text.SimpleDateFormat,java.sql.*,java.lang.Math,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.entity.*" %>
+<%@ page import="com.luna.saltfish.entity.Goods" %>
+<%@ page import="com.luna.saltfish.entity.User" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";

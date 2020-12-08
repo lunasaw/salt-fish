@@ -2,9 +2,9 @@ package com.luna.saltfish.dao;
 
 import com.luna.saltfish.tools.IntHolder;
 import com.luna.saltfish.tools.JdbcTemplate;
-import com.luna.saltfish.vo.Mess;
+import com.luna.saltfish.entity.Mess;
 
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.GenerousBeanProcessor;

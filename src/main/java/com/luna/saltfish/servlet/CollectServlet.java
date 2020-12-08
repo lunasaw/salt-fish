@@ -6,8 +6,8 @@ import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.CollectHandle;
 import com.luna.saltfish.dao.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.Goods;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.Goods;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,8 +58,6 @@ public class CollectServlet extends HttpServlet {
                 goods = goodsHandle.findById(goodsId);
             } catch (Exception e1) {
                 e1.printStackTrace();
-            } finally {
-
             }
             try {
                 if (goods != null && goods.getStatus().equals(GoodsStatusConstant.REVIEW_ED)
@@ -71,8 +69,6 @@ public class CollectServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
                 response.getWriter().print(ResultConstant.ERROR);
-            } finally {
-
             }
         } else {
             response.getWriter().print("unLogin");

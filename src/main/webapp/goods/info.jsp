@@ -1,6 +1,6 @@
 <%@page import="com.luna.saltfish.dao.UserHandle" %>
 <%@page
-        import="com.luna.saltfish.dao.GoodsHandle,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
+        import="com.luna.saltfish.dao.GoodsHandle,com.luna.saltfish.constant.*,com.luna.saltfish.entity.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
 %>
 <%/*
 物品详情页，包含详情和操作按钮

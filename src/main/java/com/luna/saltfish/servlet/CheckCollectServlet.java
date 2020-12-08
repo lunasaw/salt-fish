@@ -4,7 +4,7 @@ import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.CollectHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

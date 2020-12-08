@@ -1,7 +1,7 @@
 package com.luna.saltfish.tools;
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

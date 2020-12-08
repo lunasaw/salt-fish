@@ -4,7 +4,7 @@ import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +51,6 @@ public class RemoveShopCartServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
                 response.getWriter().print("false");
-            } finally {
-
             }
         } else {
             response.getWriter().print("false");

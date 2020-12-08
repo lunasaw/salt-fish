@@ -1,7 +1,7 @@
 package com.luna.saltfish.dao;
 
 import com.luna.saltfish.tools.JdbcTemplate;
-import com.luna.saltfish.vo.Session;
+import com.luna.saltfish.entity.Session;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;

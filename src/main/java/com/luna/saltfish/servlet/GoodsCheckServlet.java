@@ -2,8 +2,8 @@ package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.GoodsHandle;
-import com.luna.saltfish.vo.Goods;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.Goods;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

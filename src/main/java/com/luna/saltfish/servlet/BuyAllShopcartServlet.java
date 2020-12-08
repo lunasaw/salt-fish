@@ -1,13 +1,12 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dao.GoodsHandle;
 import com.luna.saltfish.dao.OrderHandle;
 import com.luna.saltfish.dao.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
-import com.luna.saltfish.vo.Goods;
-import com.luna.saltfish.vo.Order;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.Goods;
+import com.luna.saltfish.entity.Order;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,31 +31,29 @@ public class BuyAllShopcartServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
         PrintWriter resOut = response.getWriter();
         Boolean isLogined = LoginVerify.isLogin(request);
         User user = null;
         if (isLogined) {
             user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
         } else {
-            request.getRequestDispatcher("user/login.jsp?login-info=" + java.net.URLEncoder.encode("你应该先登录", "UTF-8")).forward(request, response);
+            request.getRequestDispatcher("user/login.jsp?login-info=" + java.net.URLEncoder.encode("你应该先登录", "UTF-8"))
+                .forward(request, response);
         }
         ShopCartHandle shopCartHandle = new ShopCartHandle();
-
-        GoodsHandle goodsHandle = new GoodsHandle();
         List<Goods> list = null;
         try {
             list = shopCartHandle.findGoodsByUser(user);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            ;
         }
         if (list != null && list.size() != 0) {
             OrderHandle orderHandle = new OrderHandle();
             Order order = new Order();
             Date date = new Date();
-            //使用两个list来收集失败和成功的物品
+            // 使用两个list来收集失败和成功的物品
             List<Goods> listSuc = new ArrayList<Goods>();
             List<Goods> listErr = new ArrayList<Goods>();
 
@@ -68,7 +65,7 @@ public class BuyAllShopcartServlet extends HttpServlet {
                 try {
                     if (orderHandle.doCreate(order)) {
                         listSuc.add(goods);
-                        //购买成功则移除
+                        // 购买成功则移除
                         shopCartHandle.removeList(goods.getId(), user.getId());
                     } else {
                         listErr.add(goods);
@@ -76,8 +73,6 @@ public class BuyAllShopcartServlet extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                     listErr.add(goods);
-                } finally {
-                    ;
                 }
             }
 
@@ -99,11 +94,11 @@ public class BuyAllShopcartServlet extends HttpServlet {
             }
         }
 
-
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
         doGet(request, response);
     }
 }

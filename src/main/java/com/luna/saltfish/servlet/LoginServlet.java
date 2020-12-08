@@ -4,8 +4,8 @@ import com.luna.saltfish.constant.UserLoginConstant;
 import com.luna.saltfish.dao.SessionHandle;
 import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.MD5;
-import com.luna.saltfish.vo.Session;
-import com.luna.saltfish.vo.User;
+import com.luna.saltfish.entity.Session;
+import com.luna.saltfish.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -77,8 +77,6 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-
         }
     }
 

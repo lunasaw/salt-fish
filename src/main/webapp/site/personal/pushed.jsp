@@ -4,9 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isThreadSafe="false" %>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dao.*,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
-<%@ page import="com.luna.saltfish.vo.User" %>
-<%@ page import="com.luna.saltfish.vo.Goods" %>
+        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dao.*,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.entity.*" %>
+<%@ page import="com.luna.saltfish.entity.User" %>
+<%@ page import="com.luna.saltfish.entity.Goods" %>
 
 <%
     String path = request.getContextPath();
