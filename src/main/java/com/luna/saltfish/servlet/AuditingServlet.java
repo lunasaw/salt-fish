@@ -2,7 +2,8 @@ package com.luna.saltfish.servlet;
 
 
 import com.luna.saltfish.constant.GoodsStatusConstant;
-import com.luna.saltfish.dbHandle.GoodsHandle;
+import com.luna.saltfish.constant.ResultConstant;
+import com.luna.saltfish.dao.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Goods;
 
@@ -40,26 +41,26 @@ public class AuditingServlet extends HttpServlet {
             try {
                 Goods goods = goodsHandle.findById(goodsId);
                 if (isPass == 1) {
-                    goods.setStates(GoodsStatusConstant.REVIEW_ED);
+                    goods.setStatus(GoodsStatusConstant.REVIEW_ED);
                     isSuc = true;
                 } else if (isPass == 0) {
-                    goods.setStates(GoodsStatusConstant.REVIEW_FAIL);
+                    goods.setStatus(GoodsStatusConstant.REVIEW_FAIL);
                     isSuc = true;
                 } else {
-                    response.getWriter().print("error");
+                    response.getWriter().print(ResultConstant.ERROR);
                 }
                 if (isSuc) {
                     goodsHandle.doUpdate(goods);
-                    response.getWriter().print("success");
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                response.getWriter().print("error");
+                response.getWriter().print(ResultConstant.ERROR);
             } finally {
-                goodsHandle.close();
+
             }
         } else {
-            response.getWriter().print("error");
+            response.getWriter().print(ResultConstant.ERROR);
         }
     }
 

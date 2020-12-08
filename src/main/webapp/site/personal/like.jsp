@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
+        import="com.luna.saltfish.tools.IntHolder,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,com.luna.saltfish.dao.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -55,8 +55,8 @@
                 </div>
                 <div class="col-md-10">
                     <div class="row detail-goods lead">
-                                <span class="label label-<%=good.getStates().equals(GoodsStatusConstant.REVIEW_ED)?"info":"danger" %>">
-                                <%=good.getStates().equals(GoodsStatusConstant.REVIEW_ED) ? "出售中" : "已被购买" %>
+                                <span class="label label-<%=good.getStatus().equals(GoodsStatusConstant.REVIEW_ED)?"info":"danger" %>">
+                                <%=good.getStatus().equals(GoodsStatusConstant.REVIEW_ED) ? "出售中" : "已被购买" %>
                                 </span>
                         <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                         </a>
@@ -65,7 +65,7 @@
                         <span class="detail-goods text-muted">　发布者:<%if (pUser.getName() != null) {%><%=pUser.getName() %><%} else {%><%=pUser.getEmail()%><%}%> </span>
                         <span class="detail-goods text-muted">　时间：
                                 <%
-                                    java.util.Date date = good.getCreatDate();
+                                    java.util.Date date = good.getCreateDate();
                                     SimpleDateFormat myFmt = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
                                     String dateStr = myFmt.format(date);
                                     out.print(dateStr);
@@ -130,7 +130,6 @@
 
 </script>
 <%
-    userHandle.close();
-    goodHandle.close();
-    collectHandle.close();
+
+
 %>

@@ -1,6 +1,6 @@
-<%@page import="com.luna.saltfish.dbHandle.UserHandle" %>
+<%@page import="com.luna.saltfish.dao.UserHandle" %>
 <%@page
-        import="com.luna.saltfish.dbHandle.GoodsHandle,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
+        import="com.luna.saltfish.dao.GoodsHandle,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,com.luna.saltfish.tools.*,java.util.*,java.text.*,com.luna.saltfish.servlet.*"
 %>
 <%/*
 物品详情页，包含详情和操作按钮
@@ -135,7 +135,7 @@
                 typeName = "电子";
                 break;
         }
-        Date date = good.getCreatDate();
+        Date date = good.getCreateDate();
         SimpleDateFormat myFmt = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分");
         String dateStr = myFmt.format(date);
     %>
@@ -261,12 +261,12 @@
                                 </button>
                             </div>
                             <div class="col-md-4">
-                                <button <%=good.getStates() == 2 ? "" : "disabled=\"disabled\"" %> id="buy"
+                                <button <%=good.getStatus() == 2 ? "" : "disabled=\"disabled\"" %> id="buy"
                                                                                                    type="button"
                                                                                                    class="center-block btn btn-default"
                                                                                                    onclick="toLogin(<%=isLogin %>)">
                                     <%
-                                        if (good.getStates() != 2) {
+                                        if (good.getStatus() != 2) {
                                             out.print("[不可用]已被购买或未通过审核");
                                         } else {
                                             out.print("立即购买");
@@ -284,6 +284,6 @@
 </body>
 </html>
 <%
-    userHandle.close();
-    goodsHandle.close();
+
+
 %>

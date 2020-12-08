@@ -1,7 +1,7 @@
 <%@page import="com.luna.saltfish.tools.*" %>
-<%@page import="com.luna.saltfish.dbHandle.UserHandle,com.luna.saltfish.constant.*" %>
+<%@page import="com.luna.saltfish.dao.UserHandle,com.luna.saltfish.constant.*" %>
 <%@page import="org.w3c.dom.UserDataHandler" %>
-<%@page import="com.luna.saltfish.dbHandle.GoodsHandle" %>
+<%@page import="com.luna.saltfish.dao.GoodsHandle" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page language="java" %>
@@ -144,7 +144,7 @@
                                         %>
 									</span> <span class="detail-goods text-muted"> 时间：
                                     <%
-                                        java.util.Date date = good.getCreatDate();
+                                        java.util.Date date = good.getCreateDate();
                                         SimpleDateFormat myFmt = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
                                         String dateStr = myFmt.format(date);
                                         out.print(dateStr);
@@ -187,6 +187,5 @@
 </body>
 </html>
 <%
-    goodHandle.close();
-    userHandle.close();
+
 %>

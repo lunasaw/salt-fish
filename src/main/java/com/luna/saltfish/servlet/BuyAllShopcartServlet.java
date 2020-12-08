@@ -1,8 +1,9 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.OrderHandle;
-import com.luna.saltfish.dbHandle.ShopCartHandle;
+import com.luna.saltfish.dao.GoodsHandle;
+import com.luna.saltfish.dao.OrderHandle;
+import com.luna.saltfish.dao.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Goods;
 import com.luna.saltfish.vo.Order;
@@ -41,6 +42,8 @@ public class BuyAllShopcartServlet extends HttpServlet {
             request.getRequestDispatcher("user/login.jsp?login-info=" + java.net.URLEncoder.encode("你应该先登录", "UTF-8")).forward(request, response);
         }
         ShopCartHandle shopCartHandle = new ShopCartHandle();
+
+        GoodsHandle goodsHandle = new GoodsHandle();
         List<Goods> list = null;
         try {
             list = shopCartHandle.findGoodsByUser(user);
@@ -77,7 +80,7 @@ public class BuyAllShopcartServlet extends HttpServlet {
                     ;
                 }
             }
-            orderHandle.close();
+
             if (listSuc.size() > 0) {
                 resOut.println("<p>物品：</p><p>");
                 for (int i = 0; i < listSuc.size(); i++) {
@@ -96,7 +99,7 @@ public class BuyAllShopcartServlet extends HttpServlet {
             }
         }
 
-        shopCartHandle.close();
+
     }
 
     @Override

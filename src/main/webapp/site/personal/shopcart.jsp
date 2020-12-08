@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="com.luna.saltfish.dbHandle.*,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
+        import="com.luna.saltfish.dao.*,com.luna.saltfish.constant.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -58,7 +58,7 @@
                             <div class="row detail-goods text-danger">
                                 时间：
                                 <%
-                                    java.util.Date date = good.getCreatDate();
+                                    java.util.Date date = good.getCreateDate();
                                     SimpleDateFormat myFmt = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
                                     String dateStr = myFmt.format(date);
                                     out.print(dateStr);
@@ -122,6 +122,6 @@
     }
 </script>
 <%
-    userHandle.close();
-    shopCartHandle.close();
+
+
 %>

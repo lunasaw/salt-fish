@@ -10,42 +10,42 @@ public class Goods {
     /** 物品id */
     private Integer id;
     /** 图片路径 */
-    private String image;
+    private String  image;
     /** 商品类型id */
     private Integer typeId;
     /** 物品名称 */
-    private String name;
+    private String  name;
     /** 数量 */
     private Integer num;
     /** 物品价格 */
-    private Float price;
+    private Float   price;
     /** 物品介绍 */
-    private String content;
+    private String  content;
     /** 发布者id */
     private Integer producterId;
     /** 状态 */
-    private Integer states;
-    /** 创建日期 */
-    private Date creatDate;
+    private Integer status;
 
-    public Date getCreatDate() {
-        return creatDate;
+    private Date    createDate;
+
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatDate(Date creatDate) {
-        this.creatDate = creatDate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getStates() {
-        return states;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStates(Integer states) {
-        this.states = states;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public void setId(Integer id) {
@@ -109,4 +109,3 @@ public class Goods {
     }
 
 }
-

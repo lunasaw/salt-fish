@@ -13,4 +13,7 @@ public interface UserLoginConstant {
 
     /** 用户标签 */
     String LOGIN_USER = "loginUser";
+
+    /** 未登陆 */
+    String UN_LOGIN   = "unLogin";
 }

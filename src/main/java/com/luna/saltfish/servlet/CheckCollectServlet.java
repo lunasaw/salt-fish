@@ -1,7 +1,8 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.CollectHandle;
+import com.luna.saltfish.dao.CollectHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
 
@@ -30,9 +31,9 @@ public class CheckCollectServlet extends HttpServlet {
             try {
                 boolean b = collectHandle.checkCollect(user.getId(), goodsId);
                 if (b) {
-                    response.getWriter().print("success");
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 } else {
-                    response.getWriter().print("error");
+                    response.getWriter().print(ResultConstant.ERROR);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

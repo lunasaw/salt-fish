@@ -1,7 +1,7 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.UserHandle;
+import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.tools.MD5;
 import com.luna.saltfish.vo.User;
@@ -66,7 +66,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
                     info = "更新失败，数据库错误";
                     e.printStackTrace();
                 } finally {
-                    userHandle.close();
+
                 }
             } else {
                 info = "更新失败，检查你的输入";

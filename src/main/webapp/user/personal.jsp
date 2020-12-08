@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="java.sql.*,com.luna.saltfish.vo.*,com.luna.saltfish.constant.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,com.luna.saltfish.dbHandle.*" %>
+        import="java.sql.*,com.luna.saltfish.vo.*,com.luna.saltfish.constant.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,com.luna.saltfish.dao.*" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -16,7 +16,7 @@
         UserHandle userHandle = new UserHandle();
         userId = Integer.parseInt(request.getParameter("userId"));
         user = userHandle.findById(userId);
-        userHandle.close();
+
     }
 
     if (isLogin) {

@@ -2,8 +2,8 @@ package com.luna.saltfish.servlet;
 
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.MessHandle;
-import com.luna.saltfish.dbHandle.UserHandle;
+import com.luna.saltfish.dao.MessHandle;
+import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Mess;
 import com.luna.saltfish.vo.User;
@@ -52,7 +52,7 @@ public class MessCheckServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                userHandle.close();
+
             }
         }
 
@@ -60,7 +60,7 @@ public class MessCheckServlet extends HttpServlet {
             mess.setMessFromId(fromUser.getId());
             mess.setMessText(toMess);
             mess.setMessToId(toUser.getId());
-            mess.setSendDate(new Date());
+            mess.setSendTime(new Date());
             try {
                 messHandle.doCreate(mess);
                 response.sendRedirect("user/personal.jsp?tab=mess&userId=" + fromUser.getId() + "&handle=write"
@@ -68,7 +68,7 @@ public class MessCheckServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                messHandle.close();
+
             }
         } else {
             response.sendRedirect("user/personal.jsp?tab=mess&userId=" + fromUser.getId() + "&handle=write" + "&info="

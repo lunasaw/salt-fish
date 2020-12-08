@@ -7796,17 +7796,20 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 						response = conv( response );
 					} else {
 						try {
-							response = conv( response );
-						} catch ( e ) {
-							return { state: "parsererror", error: conv ? e : "No conversion from " + prev + " to " + current };
-						}
-					}
-				}
-			}
-		}
-	}
+                            response = conv(response);
+                        } catch (e) {
+                            return {
+                                state: "parsererror",
+                                error: conv ? e : "No conversion from " + prev + " to " + current
+                            };
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	return { state: "success", data: response };
+    return {state: ResultConstant.SUCCESS, data: response};
 }
 
 jQuery.extend({
@@ -8248,11 +8251,11 @@ jQuery.extend({
 				// Extract error from statusText and normalize for non-aborts
 				error = statusText;
 				if ( status || !statusText ) {
-					statusText = "error";
-					if ( status < 0 ) {
-						status = 0;
-					}
-				}
+                    statusText = ResultConstant.ERROR;
+                    if (status < 0) {
+                        status = 0;
+                    }
+                }
 			}
 
 			// Set data for the fake xhr object
@@ -8593,44 +8596,44 @@ jQuery.ajaxTransport(function( options ) {
 							delete xhrCallbacks[ id ];
 							callback = xhr.onload = xhr.onerror = null;
 
-							if ( type === "abort" ) {
-								xhr.abort();
-							} else if ( type === "error" ) {
-								complete(
-									// file: protocol always yields status 0; see #8605, #14207
-									xhr.status,
-									xhr.statusText
-								);
-							} else {
-								complete(
-									xhrSuccessStatus[ xhr.status ] || xhr.status,
-									xhr.statusText,
-									// Support: IE9
+                            if (type === "abort") {
+                                xhr.abort();
+                            } else if (type === ResultConstant.ERROR) {
+                                complete(
+                                    // file: protocol always yields status 0; see #8605, #14207
+                                    xhr.status,
+                                    xhr.statusText
+                                );
+                            } else {
+                                complete(
+                                    xhrSuccessStatus[xhr.status] || xhr.status,
+                                    xhr.statusText,
+                                    // Support: IE9
 									// Accessing binary-data responseText throws an exception
 									// (#11426)
 									typeof xhr.responseText === "string" ? {
 										text: xhr.responseText
-									} : undefined,
-									xhr.getAllResponseHeaders()
-								);
-							}
-						}
-					};
-				};
+                                    } : undefined,
+                                    xhr.getAllResponseHeaders()
+                                );
+                            }
+                        }
+                    };
+                };
 
-				// Listen to events
-				xhr.onload = callback();
-				xhr.onerror = callback("error");
+                // Listen to events
+                xhr.onload = callback();
+                xhr.onerror = callback(ResultConstant.ERROR);
 
-				// Create the abort callback
-				callback = xhrCallbacks[ id ] = callback("abort");
+                // Create the abort callback
+                callback = xhrCallbacks[id] = callback("abort");
 
-				try {
-					// Do send the request (this may raise an exception)
-					xhr.send( options.hasContent && options.data || null );
-				} catch ( e ) {
-					// #14683: Only rethrow if this hasn't been notified as an error yet
-					if ( callback ) {
+                try {
+                    // Do send the request (this may raise an exception)
+                    xhr.send(options.hasContent && options.data || null);
+                } catch (e) {
+                    // #14683: Only rethrow if this hasn't been notified as an error yet
+                    if (callback) {
 						throw e;
 					}
 				}
@@ -8691,8 +8694,8 @@ jQuery.ajaxTransport( "script", function( s ) {
 						script.remove();
 						callback = null;
 						if ( evt ) {
-							complete( evt.type === "error" ? 404 : 200, evt.type );
-						}
+                            complete(evt.type === ResultConstant.ERROR ? 404 : 200, evt.type);
+                        }
 					}
 				);
 				document.head.appendChild( script[ 0 ] );

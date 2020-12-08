@@ -1,7 +1,8 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.CollectHandle;
+import com.luna.saltfish.dao.CollectHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
 
@@ -42,7 +43,7 @@ public class RemoveCollectServlet extends HttpServlet {
             CollectHandle collectHandle = new CollectHandle();
             try {
                 if (collectHandle.removeOneFromCollect(goodsId, loginUserId)) {
-                    response.getWriter().print("success");
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 } else {
                     response.getWriter().print("false");
                 }
@@ -50,7 +51,7 @@ public class RemoveCollectServlet extends HttpServlet {
                 e.printStackTrace();
                 response.getWriter().print("false");
             } finally {
-                collectHandle.close();
+
             }
         } else {
             response.getWriter().print("false");

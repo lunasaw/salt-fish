@@ -1,7 +1,8 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.ShopCartHandle;
+import com.luna.saltfish.dao.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
 
@@ -43,7 +44,7 @@ public class RemoveShopCartServlet extends HttpServlet {
             ShopCartHandle shopCartHandle = new ShopCartHandle();
             try {
                 if (shopCartHandle.removeList(goodsId, loginUserId)) {
-                    response.getWriter().print("success");
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 } else {
                     response.getWriter().print("false");
                 }
@@ -51,7 +52,7 @@ public class RemoveShopCartServlet extends HttpServlet {
                 e.printStackTrace();
                 response.getWriter().print("false");
             } finally {
-                shopCartHandle.close();
+
             }
         } else {
             response.getWriter().print("false");

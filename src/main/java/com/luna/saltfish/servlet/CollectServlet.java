@@ -1,9 +1,10 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.GoodsStatusConstant;
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.CollectHandle;
-import com.luna.saltfish.dbHandle.GoodsHandle;
+import com.luna.saltfish.dao.CollectHandle;
+import com.luna.saltfish.dao.GoodsHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Goods;
 import com.luna.saltfish.vo.User;
@@ -58,20 +59,20 @@ public class CollectServlet extends HttpServlet {
             } catch (Exception e1) {
                 e1.printStackTrace();
             } finally {
-                goodsHandle.close();
+
             }
             try {
-                if (goods != null && goods.getStates().equals(GoodsStatusConstant.REVIEW_ED)
+                if (goods != null && goods.getStatus().equals(GoodsStatusConstant.REVIEW_ED)
                     && collectHandle.doCreate(userId, goodsId)) {
-                    response.getWriter().print("success");
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 } else {
-                    response.getWriter().print("error");
+                    response.getWriter().print(ResultConstant.ERROR);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                response.getWriter().print("error");
+                response.getWriter().print(ResultConstant.ERROR);
             } finally {
-                collectHandle.close();
+
             }
         } else {
             response.getWriter().print("unLogin");

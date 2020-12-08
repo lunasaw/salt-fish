@@ -1,7 +1,7 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.UserHandle;
+import com.luna.saltfish.dao.UserHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
 
@@ -61,7 +61,7 @@ public class UpdateUserImgServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            userHandle.close();
+
         }
     }
 

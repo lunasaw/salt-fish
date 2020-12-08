@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isThreadSafe="false" %>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
+        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dao.*,com.luna.saltfish.tools.*,com.luna.saltfish.constant.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
 <%@ page import="com.luna.saltfish.vo.User" %>
 <%@ page import="com.luna.saltfish.vo.Goods" %>
 
@@ -49,8 +49,8 @@
                     </div>
                     <div class="col-md-10">
                         <div class="row detail-goods lead">
-                                <span class="label label-<%=good.getStates()==2?"info":"danger" %>">
-                                <%=good.getStates() == 2 ? "出售中" : "已被购买" %>
+                                <span class="label label-<%=good.getStatus()==2?"info":"danger" %>">
+                                <%=good.getStatus() == 2 ? "出售中" : "已被购买" %>
                                 </span>
                             <a href="goods/info.jsp?goodsId=<%=good.getId()%>"><%=good.getName()%>
                             </a>
@@ -60,7 +60,7 @@
                             <span class="detail-goods text-muted">　发布者:<%if (user.getName() != null) {%><%=user.getName() %><%} else {%><%=user.getEmail()%><%}%> </span>
                             <span class="detail-goods text-muted">　时间：
                                 <%
-                                    java.util.Date date = good.getCreatDate();
+                                    java.util.Date date = good.getCreateDate();
                                     out.print(myFmt.format(date));
                                 %>
                                 </span>
@@ -78,6 +78,6 @@
     </div>
 </div>
 <%
-    userHandle.close();
-    goodsHandle.close();
+
+
 %>

@@ -1,7 +1,7 @@
 package com.luna.saltfish.servlet;
 
 
-import com.luna.saltfish.dbHandle.OrderHandle;
+import com.luna.saltfish.dao.OrderHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Order;
 
@@ -58,7 +58,7 @@ public class OrderCheckServlet extends HttpServlet {
                 e.printStackTrace();
                 return;
             } finally {
-                orderHandle.close();
+
             }
         } else {
             response.sendRedirect(fromUrl[0] + "&info=" + java.net.URLEncoder.encode("购买失败", "UTF-8"));

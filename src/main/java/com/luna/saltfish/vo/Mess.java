@@ -13,7 +13,7 @@ public class Mess {
     /** 消息内容 */
     private String messText;
     /** 消息发送时间 */
-    private Date sendDate;
+    private Date   sendTime;
     /** 消息id */
     private int messId;
     /** 消息类型 */
@@ -43,12 +43,12 @@ public class Mess {
         this.messText = messText;
     }
 
-    public Date getSendDate() {
-        return sendDate;
+    public Date getSendTime() {
+        return sendTime;
     }
 
-    public void setSendDate(Date sendDate) {
-        this.sendDate = sendDate;
+    public void setSendTime(Date sendTime) {
+        this.sendTime = sendTime;
     }
 
     public int getMessId() {

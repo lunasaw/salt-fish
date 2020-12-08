@@ -33,10 +33,10 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@ page
-        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dbHandle.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
+        import="java.text.SimpleDateFormat,java.sql.*,com.luna.saltfish.dao.*,com.luna.saltfish.tools.*,javax.servlet.http.HttpSession,java.util.*,com.luna.saltfish.vo.*" %>
 <%@ page import="com.luna.saltfish.vo.User" %>
-<%@ page import="com.luna.saltfish.dbHandle.UserHandle" %>
-<%@ page import="com.luna.saltfish.dbHandle.MessHandle" %>
+<%@ page import="com.luna.saltfish.dao.UserHandle" %>
+<%@ page import="com.luna.saltfish.dao.MessHandle" %>
 <%@ page import="com.luna.saltfish.tools.LoginVerify" %>
 <%@ page import="com.luna.saltfish.tools.StaticVar" %>
 <%@ page import="com.luna.saltfish.vo.Mess" %>
@@ -87,7 +87,7 @@
     <span class="media-heading">
     
     <%
-        if (mess.getMessText().contains("==============")) {
+        if (mess.getMessText().contains("==============") || mess.getMessFromId() == 1) {
             out.print("<span class=\"label label-danger\">SYS</span>");
         } else {
             out.print("<span class=\"label label-primary\">user</span>");
@@ -104,7 +104,7 @@
     %>
     </a>，
     <%
-        java.util.Date date = mess.getSendDate();
+        java.util.Date date = mess.getSendTime();
         SimpleDateFormat myFmt = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String dateStr = myFmt.format(date);
         out.print(dateStr);
@@ -226,6 +226,6 @@
     }
 </script>
 <%
-    userHandle.close();
-    messHandle.close();
+
+
 %>

@@ -10,7 +10,7 @@ status说明：
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page
-        import="com.luna.saltfish.dbHandle.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
+        import="com.luna.saltfish.dao.*,com.luna.saltfish.vo.*,java.sql.*,java.util.*,java.text.SimpleDateFormat" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -82,7 +82,7 @@ status说明：
                     %>
                 </td>
                 <td class="td-user-name"
-                    style="width: 15%;"><%=new SimpleDateFormat("yyyy/MM/dd HH:mm").format(goods.getCreatDate())%>
+                    style="width: 15%;"><%=new SimpleDateFormat("yyyy/MM/dd HH:mm").format(goods.getCreateDate())%>
                 </td>
                 <td class="td-user-name"
                     style="width: 15%;"><%="<a target='_blank' href=" + "goods/info.jsp?goodsId=" + goods.getId() + ">" + goods.getName() + "</a>"%>
@@ -109,6 +109,6 @@ status说明：
     </div>
 </div>
 <%
-    userHandle.close();
-    goodsHandle.close();
+
+
 %>

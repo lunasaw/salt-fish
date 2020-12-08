@@ -1,7 +1,8 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.MessHandle;
+import com.luna.saltfish.dao.MessHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
 
@@ -37,12 +38,12 @@ public class RemoveMessServlet extends HttpServlet {
             MessHandle messHandle = new MessHandle();
             try {
                 if (messHandle.removeOneMess(messId, userId)) ;
-                response.getWriter().print("success");
+                response.getWriter().print(ResultConstant.SUCCESS);
             } catch (Exception e) {
                 e.printStackTrace();
                 response.getWriter().print("false");
             } finally {
-                messHandle.close();
+
             }
         } else {
             response.getWriter().print("false");

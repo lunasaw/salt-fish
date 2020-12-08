@@ -1,7 +1,7 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.GoodsHandle;
+import com.luna.saltfish.dao.GoodsHandle;
 import com.luna.saltfish.vo.Goods;
 import com.luna.saltfish.vo.User;
 
@@ -103,7 +103,7 @@ public class GoodsCheckServlet extends HttpServlet {
                             part.getInputStream().read(bt);
                             fos.write(bt);
                             Date date = new Date();
-                            good.setCreatDate(date);
+                            good.setCreateDate(date);
                             goodsHandle.doCreate(good);
                             response
                                 .sendRedirect("user/personal.jsp?tab=push&userId=" + user.getId() + "&success=1&info="
@@ -118,7 +118,6 @@ public class GoodsCheckServlet extends HttpServlet {
                             if (fos != null) {
                                 fos.close();
                             }
-                            goodsHandle.close();
                         }
                     } else {
                         fileCheck = "需要上传物品图片";

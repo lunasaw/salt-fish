@@ -1,9 +1,10 @@
 package com.luna.saltfish.servlet;
 
 import com.luna.saltfish.constant.GoodsStatusConstant;
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.GoodsHandle;
-import com.luna.saltfish.dbHandle.ShopCartHandle;
+import com.luna.saltfish.dao.GoodsHandle;
+import com.luna.saltfish.dao.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.Goods;
 import com.luna.saltfish.vo.User;
@@ -34,10 +35,8 @@ public class ShoppingCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
-
         if (LoginVerify.isLogin(request)) {
             User user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
-            int userId = user.getId();
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
             ShopCartHandle shopCartHandle = new ShopCartHandle();
             GoodsHandle goodsHandle = new GoodsHandle();
@@ -46,24 +45,22 @@ public class ShoppingCartServlet extends HttpServlet {
                 goods = goodsHandle.findById(goodsId);
             } catch (Exception e1) {
                 e1.printStackTrace();
-            } finally {
-                goodsHandle.close();
             }
             try {
-                if (goods != null && goods.getStates().equals(GoodsStatusConstant.REVIEW_ED)
-                    && shopCartHandle.doSaveShoppingCart(goodsId, userId)) {
-                    response.getWriter().print("success");
+                if (goods != null && goods.getStatus().equals(GoodsStatusConstant.REVIEW_ED)
+                    && shopCartHandle.doSaveShoppingCart(goodsId, user.getId())) {
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 } else {
-                    response.getWriter().print("error");
+                    response.getWriter().print(ResultConstant.ERROR);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                response.getWriter().print("error");
+                response.getWriter().print(ResultConstant.ERROR);
             } finally {
-                shopCartHandle.close();
+
             }
         } else {
-            response.getWriter().print("unLogin");
+            response.getWriter().print(UserLoginConstant.UN_LOGIN);
         }
     }
 

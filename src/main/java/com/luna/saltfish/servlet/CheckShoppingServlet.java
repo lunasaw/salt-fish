@@ -1,12 +1,11 @@
 package com.luna.saltfish.servlet;
 
+import com.luna.saltfish.constant.ResultConstant;
 import com.luna.saltfish.constant.UserLoginConstant;
-import com.luna.saltfish.dbHandle.CollectHandle;
-import com.luna.saltfish.dbHandle.ShopCartHandle;
+import com.luna.saltfish.dao.ShopCartHandle;
 import com.luna.saltfish.tools.LoginVerify;
 import com.luna.saltfish.vo.User;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,7 @@ public class CheckShoppingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+        throws IOException {
         if (LoginVerify.isLogin(request)) {
             User user = (User)request.getSession().getAttribute(UserLoginConstant.LOGIN_USER);
             int goodsId = Integer.parseInt(request.getParameter("goodsId"));
@@ -29,15 +28,15 @@ public class CheckShoppingServlet extends HttpServlet {
             try {
                 boolean b = shopCartHandle.checkShoppingCart(user.getId(), goodsId);
                 if (b) {
-                    response.getWriter().print("success");
+                    response.getWriter().print(ResultConstant.SUCCESS);
                 } else {
-                    response.getWriter().print("error");
+                    response.getWriter().print(ResultConstant.ERROR);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            response.getWriter().print("unLogin");
+            response.getWriter().print(UserLoginConstant.UN_LOGIN);
         }
     }
 }
