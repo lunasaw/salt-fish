@@ -1,5 +1,6 @@
 package com.luna.saltfish.dao;
 
+import com.luna.saltfish.constant.GoodsStatusConstant;
 import com.luna.saltfish.tools.IntHolder;
 import com.luna.saltfish.tools.JdbcTemplate;
 import com.luna.saltfish.entity.Goods;
@@ -55,7 +56,9 @@ public class CollectHandle {
         GoodsHandle goodsHandle = new GoodsHandle();
         List<Goods> goodsList =
             JdbcTemplate.query(sql, goodsHandle.getBeanListHandler(), user.getId(), limitMin, perPage);
-        num.value = goodsList.size();
+        String count = "SELECT count(*) from goods  where id = any(SELECT goods_id from `collect`  where user_id=?)";
+        num.value = Integer
+            .parseInt(JdbcTemplate.query(count, new ScalarHandler<>(), user.getId()).toString());
         return goodsList;
     }
 

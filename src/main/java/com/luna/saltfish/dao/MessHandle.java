@@ -1,5 +1,6 @@
 package com.luna.saltfish.dao;
 
+import com.luna.saltfish.constant.GoodsStatusConstant;
 import com.luna.saltfish.tools.IntHolder;
 import com.luna.saltfish.tools.JdbcTemplate;
 import com.luna.saltfish.entity.Mess;
@@ -11,6 +12,7 @@ import org.apache.commons.dbutils.GenerousBeanProcessor;
 import org.apache.commons.dbutils.RowProcessor;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.util.List;
 
@@ -79,7 +81,9 @@ public class MessHandle {
         String sql =
             "SELECT mess_id, mess_from_id, mess_to_id, send_time, mess_text from `message`  where mess_to_id=? order by send_time desc limit ?,?";
         List<Mess> messList = JdbcTemplate.query(sql, getBeanListHandler(), user.getId(), limitMin, perPage);
-        num.value = messList.size();
+        String count = "SELECT count(*) from message  where mess_to_id=?";
+        num.value = Integer
+            .parseInt(JdbcTemplate.query(count, new ScalarHandler<>(), user.getId()).toString());
         return messList;
     }
 

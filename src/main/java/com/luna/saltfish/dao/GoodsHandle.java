@@ -104,7 +104,9 @@ public class GoodsHandle {
             JdbcTemplate.query(sql, getBeanListHandler(), GoodsStatusConstant.REVIEW_ED,
                 limitMin,
                 perPage);
-        num.value = queryGoodsList.size();
+        String count = "SELECT count(*) from goods  where status=?";
+        num.value = Integer
+            .parseInt(JdbcTemplate.query(count, new ScalarHandler<>(), GoodsStatusConstant.REVIEW_ED).toString());
         return queryGoodsList;
     }
 
@@ -202,7 +204,10 @@ public class GoodsHandle {
 
         List<Goods> goodsList =
             JdbcTemplate.query(sql, getBeanListHandler(), GoodsStatusConstant.REVIEW_ED, cetaId, limitMin, perPage);
-        num.value = goodsList.size();
+        String count = "SELECT count(*) from goods  where status=? and type_id=? ";
+        num.value = Integer
+            .parseInt(
+                JdbcTemplate.query(count, new ScalarHandler<>(), GoodsStatusConstant.REVIEW_ED, cetaId).toString());
         return goodsList;
     }
 
