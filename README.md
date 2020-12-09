@@ -21,7 +21,7 @@ salt-fish
     <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl86jd3z44j30i00503yt.jpg" alt="Logo" width="240" height="80">
   </a>
 
-  <h3 align="center">沿途之声</h3>
+  <h3 align="center">盐鱼</h3>
   <p align="center">
     盐鱼(校园二手交易平台)
     <br />
