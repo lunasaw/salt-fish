@@ -66,7 +66,7 @@ git clone https://github.com/czy1024/salt-fish.git
 
 eg:
 
-    当然首先你需要修改你的数据库@src/main/java/com/luna/saltfish/dbc/DatabaseConnection.java
+    当然首先你需要修改你的数据库@salt-fish-server/src/main/resources/c3p0.properties
     将sql文件夹下的数据导入你的数据库
     使用tomcat：项目开发使用的版本为8
     使用mysql版本为：5.7
